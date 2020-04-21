@@ -12,6 +12,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const styles = theme => ({
   root: {
@@ -30,6 +31,9 @@ class SpaceX extends React.Component {
     super(props)
     this.state = {
       launches: [{}],
+      allLaunches: [{}],
+      selected: '',
+      itemSelected: false,
     }
   }
 
@@ -41,6 +45,19 @@ class SpaceX extends React.Component {
         console.log(this.state.launches)
       })
       .catch(error => console.error(error))
+
+    axios
+      .get(`https://api.spacexdata.com/v3/launches/`)
+      .then(res => {
+        this.setState({ allLaunches: res.data })
+        console.log(this.state.allLaunches)
+      })
+      .catch(error => console.error(error))
+  }
+
+
+  handleInput = (e) => {
+    this.setState({ allLaunches: e.target.value })
   }
 
   render() {
@@ -49,8 +66,6 @@ class SpaceX extends React.Component {
     return (
       <div>
         <br/>
-        <Grid justify="center" container spacing={10}>
-          <Grid item>
             <p>Launch schedule for the next 10 launches</p>
             { this.state.launches.filter(flight => (flight.flight_number <= this.state.launches[0].flight_number + 10))
               .map(flight => (
@@ -83,25 +98,6 @@ class SpaceX extends React.Component {
               </ExpansionPanel>
             ))
             }
-          </Grid>
-          <Grid item>
-            <p>Search for a mission</p>
-          <TextField
-             className={classes.root}
-             id="standard-basic"
-             label="Mission name or date"
-             style={{width: '220px'}}
-             InputProps={{
-              className: classes.input
-             }}
-             InputLabelProps={{
-              classes: {
-                root: classes.cssLabel,
-              },
-            }}
-             />
-          </Grid>
-        </Grid>
       </div>
     )
   }
