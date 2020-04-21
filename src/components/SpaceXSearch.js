@@ -25,6 +25,9 @@ const styles = theme => ({
   cssLabel: {
     color : 'gray'
   },
+  '.MuiAutocomplete-option': {
+    color: 'black'
+  }
 });
 
 // Search functionality for displaying information about any mission searched by the user
@@ -71,17 +74,18 @@ class SpaceXSearch extends React.Component {
             <p>Filter missions (completed or upcoming)</p>
             <Autocomplete
               id="combo-box-demo"
+              classes={classes}
               onChange={this.handleInput}
               options={this.state.allLaunches}
               getOptionLabel={(option) => option.mission_name}
-              style={{ width: 300 }}
+              fullWidth
               renderInput={(params) =>
                 <TextField
                   {...params}
                   className={classes.root}
                   id="standard-basic"
                   label="Mission name"
-                  style={{width: '220px'}}
+                  style={{width: '370px'}}
                   InputProps={{
                     ...params.InputProps,
                     className: classes.input
@@ -96,7 +100,7 @@ class SpaceXSearch extends React.Component {
             />
             { selectedLaunch.length > 0
             &&
-            <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '400px'}}>
+            <Paper elevation={3} style={{ background: '#212121', padding: '10px', marginTop: '10px', maxWidth: '350px'}}>
              {selectedLaunch} 
             </Paper>
             }

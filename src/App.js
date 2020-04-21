@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
         <Nav/>
-        <Grid justify="center" container spacing={10}>
+        <Grid justify="center" align-content="center" container spacing={10}>
           <Grid item className="List">
               <SpaceXList/>
           </Grid>
