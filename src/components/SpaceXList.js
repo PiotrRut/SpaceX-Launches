@@ -100,13 +100,15 @@ class SpaceXList extends React.Component {
                     <br/>
                     Launching from {flight.launch_site.site_name_long}
                     <br/>
+                    Destination: {flight.rocket.second_stage.payloads[0].orbit}
+                    <br/>
                     {flight.links.reddit_campaign && <a href={flight.links.reddit_campaign}>Reddit thread</a>}
                   </Typography> 
                   : 
                   <Typography>
                     Rocket: {flight.rocket.rocket_name}
                     <br/> <br/>
-                    No details provided yet
+                    No details provided yet for this launch
                   </Typography>
                   }
                 </ExpansionPanelDetails>

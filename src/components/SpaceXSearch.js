@@ -68,30 +68,64 @@ class SpaceXSearch extends React.Component {
     this.setState({selected: e.target.textContent })
   }
 
+
   render() {
     const { classes } = this.props;
     {/* Filter the array to only return the details about the currently selected mission */}
     {/* Launches with unconfirmed date (quarterly or yearly precision) will be marked as such */}
-    const selectedLaunch = this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
-            .map(launch => ( 
-              launch.tentative_max_precision === 'quarter' || launch.tentative_max_precision === 'year' ?
-                  <p style={{ color: '#d32f2f'}}>
-                    {launch.details ? launch.details : 'No details provided'}
-                    <br/> <br/>
-                    Launch: TBC (NET {launch.launch_year})
-                  </p>
-                  :
-                  <p>
-                    {/* Add the mission badge at the top of the results */}
-                    {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '80px', justifyContent: 'center'}} src={launch.links.mission_patch_small}/>}
-                    <br/> <br/>
-                    {launch.details ? launch.details : 'No details provided yet'}
-                    <br/> <br/>
-                    Launch: {moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
-                    <br/>
-                    Launch site: {launch.launch_site.site_name_long}
-                  </p>                            
-             ))
+    const selectedLaunch = 
+    this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
+      .map(launch => ( 
+        launch.tentative_max_precision === 'quarter' || launch.tentative_max_precision === 'year' ?
+          <p style={{ color: '#d32f2f'}}>
+            {launch.details ? launch.details : 'No details provided'}
+            <br/> <br/>
+            Launch: TBC (NET {launch.launch_year})
+          </p>
+          :
+          <p>
+            {/* Add the mission badge at the top of the results */}
+            {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '80px', justifyContent: 'center', marginBottom: '8px'}} src={launch.links.mission_patch_small}/>}
+            <br/>
+
+            {/* If landing has failed and fell in the water */}
+            {(!launch.upcoming && launch.rocket.first_stage.cores[0].landing_type === 'Ocean' && !launch.rocket.first_stage.cores[0].land_success) &&
+              <p style={{color: '#d32f2f'}}>
+                Water Landing - Failed
+              </p>
+            }
+            {/* If landing has failed */}                  
+            {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type === 'ASDS') && 
+              <p style={{color: '#d32f2f'}}>
+                Landing Failed
+              </p>
+            }
+            {/* If launch has failed */}
+            {(!launch.upcoming && !launch.launch_success) && 
+              <p style={{color: '#d32f2f'}}>
+                Launch Failed
+              </p>
+            }
+            {/* If landing has been successfull and fell in the water */}
+            {(!launch.upcoming && launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type === 'Ocean') && 
+              <p style={{color: '#1976d2'}}>
+                Water Landing - Successful
+              </p>
+            }
+            {/* If landing has been sucessfull */}
+            {(!launch.upcoming && launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type !== 'Ocean') && 
+              <p style={{color: '#388e3c'}}>
+                Landing Successful
+              </p>
+            }
+
+            {launch.details ? launch.details : 'No details provided for this launch'}
+            <br/> <br/> 
+            Launch: {moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
+            <br/>
+            Launch site: {launch.launch_site.site_name_long}
+          </p>                            
+      ))
     return (
       <div className={classes.root}>
         <br/>
