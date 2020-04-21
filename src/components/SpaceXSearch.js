@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Paper from '@material-ui/core/Paper'
 
 const styles = theme => ({
   root: {
@@ -48,15 +49,23 @@ class SpaceXSearch extends React.Component {
 
 
   handleInput = (e) => {
-    this.setState({ allLaunches: e.target.value })
+    this.setState({selected: e.target.textContent })
   }
 
   render() {
     const { classes } = this.props;
+    const selectedLaunch = this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
+            .map(launch => (
+                 <p>
+                     {launch.details}
+                     <br/> <br/>
+                     Launch: {moment(launch.launch_date_utc).format('D MMM YYYY')}
+                 </p>
+             ))
     return (
       <div>
         <br/>
-            <p>Search for a mission (completed or upcoming)</p>
+            <p>Filter missions (completed or upcoming)</p>
             <Autocomplete
               id="combo-box-demo"
               onChange={this.handleInput}
@@ -68,7 +77,7 @@ class SpaceXSearch extends React.Component {
                   {...params}
                   className={classes.root}
                   id="standard-basic"
-                  label="Mission name or date"
+                  label="Mission name"
                   style={{width: '220px'}}
                   InputProps={{
                     ...params.InputProps,
@@ -82,6 +91,12 @@ class SpaceXSearch extends React.Component {
                 />   
               }
             />
+            { this.state.selected
+            &&
+            <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '400px'}}>
+             {selectedLaunch} 
+            </Paper>
+            }
       </div>
     )
   }

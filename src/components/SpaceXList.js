@@ -26,7 +26,7 @@ const styles = theme => ({
   },
 });
 
-class SpaceX extends React.Component {
+class SpaceXList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -67,6 +67,7 @@ class SpaceX extends React.Component {
       <div>
         <br/>
             <p>Launch schedule for the next 10 launches</p>
+            {/* Filter the array to only return the next ten launches, and display their details inside the panel */}
             { this.state.launches.filter(flight => (flight.flight_number <= this.state.launches[0].flight_number + 10))
               .map(flight => (
               <ExpansionPanel style={{width: '700px', backgroundColor: '#212121'}}>
@@ -103,8 +104,8 @@ class SpaceX extends React.Component {
   }
 }
 
-SpaceX.propTypes = {
+SpaceXList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles) (SpaceX);
+export default withStyles(styles) (SpaceXList);
