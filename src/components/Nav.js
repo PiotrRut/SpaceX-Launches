@@ -27,7 +27,7 @@ export default function Nav() {
     <div className={classes.root}>
       <AppBar position="static" style={{ background: "#212121" }}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h7" className={classes.title}>
             SpaceX Launch and Mission Viewer
           </Typography>
           <GithubCorner

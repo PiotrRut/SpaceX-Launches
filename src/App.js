@@ -15,14 +15,14 @@ function App() {
     <div className="App">
         <Nav/>
         <Grid justify="center" align-content="center" container spacing={10}>
-          <Grid item className="List" lg={7}>
+          <Grid item className="List" lg={6}>
               <SpaceXList/>
           </Grid>
-          <Grid item className="Search" lg={4} sm={2} xs={11}>
+          <Grid item className="Search" lg={4} sm={2} xs={10}>
               <SpaceXSearch/>
           </Grid>
         </Grid> 
-        <br/> <br/>
+        <br/> <br/> <br/>
         <p>
           This site is not affiliated with <a href="http://spacex.com">SpaceX</a>.
           API by <a href="https://github.com/r-spacex/SpaceX-API">r-spacex.</a>

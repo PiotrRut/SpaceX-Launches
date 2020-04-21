@@ -95,7 +95,7 @@ class SpaceXSearch extends React.Component {
     return (
       <div className={classes.root}>
         <br/>
-            <p>Filter missions (completed or upcoming)</p>
+            <Typography paragraph>Filter missions (completed and future) &nbsp;</Typography>
             <Autocomplete
               id="combo-box-demo"
               classes={classes}
