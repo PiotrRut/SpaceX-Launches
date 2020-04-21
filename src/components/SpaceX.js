@@ -10,7 +10,20 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/styles';
 
+const styles = theme => ({
+  root: {
+    color: "white"
+  },
+  input: {
+    color: "white"
+  },
+  cssLabel: {
+    color : 'gray'
+  },
+});
 
 class SpaceX extends React.Component {
   constructor(props) {
@@ -31,6 +44,7 @@ class SpaceX extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     if (this.state.launches === null) return null;
     return (
       <div>
@@ -73,10 +87,18 @@ class SpaceX extends React.Component {
           <Grid item>
             <p>Search for a mission</p>
           <TextField
-             className="SearchMissions"
+             className={classes.root}
              id="standard-basic"
              label="Mission name or date"
-             style={{width: '220px', color: 'white'}}
+             style={{width: '220px'}}
+             InputProps={{
+              className: classes.input
+             }}
+             InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+              },
+            }}
              />
           </Grid>
         </Grid>
@@ -84,4 +106,9 @@ class SpaceX extends React.Component {
     )
   }
 }
-export default SpaceX
+
+SpaceX.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles) (SpaceX);
