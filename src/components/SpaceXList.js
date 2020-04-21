@@ -16,7 +16,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const styles = theme => ({
   root: {
-    color: "white"
+    color: "white",
+    width: '100%',
   },
   input: {
     color: "white"
@@ -64,13 +65,13 @@ class SpaceXList extends React.Component {
     const { classes } = this.props;
     if (this.state.launches === null) return null;
     return (
-      <div>
+      <div className={classes.root}>
         <br/>
             <p>Launch schedule for the next 10 launches</p>
             {/* Filter the array to only return the next ten launches, and display their details inside the panel */}
             { this.state.launches.filter(flight => (flight.flight_number <= this.state.launches[0].flight_number + 9))
               .map(flight => (
-              <ExpansionPanel style={{width: '700px', backgroundColor: '#212121'}}>
+              <ExpansionPanel style={{ maxWidth: '700px', backgroundColor: '#212121', marginLeft: '5px', marginRight: '5px'}}>
                 <ExpansionPanelSummary
                   expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}
                   aria-controls="panel1a-content"

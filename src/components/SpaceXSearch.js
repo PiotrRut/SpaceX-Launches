@@ -17,7 +17,8 @@ import Paper from '@material-ui/core/Paper'
 
 const styles = theme => ({
   root: {
-    color: "white"
+    color: "white",
+    width: '100%'
   },
   input: {
     color: "white"
@@ -83,7 +84,7 @@ class SpaceXSearch extends React.Component {
                   <p>
                     {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '80px', justifyContent: 'center'}} src={launch.links.mission_patch_small}/>}
                     <br/> <br/>
-                    {launch.details ? launch.details : 'No details provided'}
+                    {launch.details ? launch.details : 'No details provided yet'}
                     <br/> <br/>
                     Launch: {moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
                     <br/>
@@ -91,7 +92,7 @@ class SpaceXSearch extends React.Component {
                   </p>                            
              ))
     return (
-      <div>
+      <div className={classes.root}>
         <br/>
             <p>Filter missions (completed or upcoming)</p>
             <Autocomplete
@@ -100,14 +101,14 @@ class SpaceXSearch extends React.Component {
               onChange={this.handleInput}
               options={this.state.allLaunches}
               getOptionLabel={(option) => option.mission_name}
-              fullWidth
+              style={{maxWidth: '390px'}}
               renderInput={(params) =>
                 <TextField
                   {...params}
                   className={classes.root}
                   id="standard-basic"
                   label="Start typing the mission name..."
-                  style={{width: '380px'}}
+                  style={{maxWidth: '390px'}}
                   InputProps={{
                     ...params.InputProps,
                     className: classes.input
@@ -122,7 +123,7 @@ class SpaceXSearch extends React.Component {
             />
             { selectedLaunch.length > 0
             &&
-            <Paper elevation={3} style={{ background: '#212121', padding: '10px', marginTop: '10px', maxWidth: '360px'}}>
+            <Paper elevation={3} style={{ background: '#212121', padding: '10px', marginTop: '10px', maxWidth: '370px'}}>
              {selectedLaunch} 
             </Paper>
             }

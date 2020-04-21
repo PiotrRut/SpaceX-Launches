@@ -3,10 +3,14 @@ html, body{
   background-color: #282c34;
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .App {
   text-align: center;
   color: white;
+  height: auto;
+  width: 100vw;
 }
 
 .App-header {
@@ -29,16 +33,3 @@ h1, h2, h3, h4, h5, p {
   color: white;
 }
 
-.SearchMissions {
-  color: white
-}
-
-.List {
-  position: relative;
-  display: flex;
-}
-
-.Search {
-  position: relative;
-  display: flex;
-}
