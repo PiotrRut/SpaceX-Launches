@@ -25,9 +25,19 @@ const styles = theme => ({
   cssLabel: {
     color : 'gray'
   },
-  '.MuiAutocomplete-option': {
-    color: 'black'
-  }
+  paper: { // set colour of the paper dropdown
+    backgroundColor: '#212121',
+    color: 'white'
+  },
+  clearIndicator: { // set colour of the clear button
+    color: 'white'
+  },
+  popupIndicator: { // set colour of the dropdown button
+    color: 'white'
+  },
+  noOptions: { // set colour to the text when there are no options returned from search
+    color: 'white'
+  },
 });
 
 // Search functionality for displaying information about any mission searched by the user
@@ -84,7 +94,7 @@ class SpaceXSearch extends React.Component {
                   {...params}
                   className={classes.root}
                   id="standard-basic"
-                  label="Mission name"
+                  label="Start typing the mission name..."
                   style={{width: '370px'}}
                   InputProps={{
                     ...params.InputProps,
