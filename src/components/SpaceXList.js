@@ -76,7 +76,7 @@ class SpaceXList extends React.Component {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
-                  {(flight.tentative_max_precision === 'quarter' || flight.tentative_max_precision === 'year') ?
+                  {flight.tentative_max_precision === 'quarter' || flight.tentative_max_precision === 'year' ?
                   <Typography style={{ color: 'red'}}>
                     <i>{flight.mission_name}</i> - Date: TBC (NET {flight.launch_year})
                   </Typography> 
@@ -93,6 +93,8 @@ class SpaceXList extends React.Component {
                     Rocket: {flight.rocket.rocket_name}
                     <br/> <br/>
                     {flight.details}
+                    <br/> <br/>
+                    Launch: {moment(flight.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
                   </Typography> 
                   : 
                   <Typography>

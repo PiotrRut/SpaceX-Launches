@@ -72,11 +72,18 @@ class SpaceXSearch extends React.Component {
     {/* Filter the array to only return the details about the currently selected mission */}
     const selectedLaunch = this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
             .map(launch => (
-                 <p>
-                     {launch.details}
-                     <br/> <br/>
-                     Launch: {moment(launch.launch_date_utc).format('D MMM YYYY')}
-                 </p>
+              launch.tentative_max_precision === 'quarter' || launch.tentative_max_precision === 'year' ?
+                  <p>
+                    {launch.details}
+                    <br/> <br/>
+                    Launch: TBC (NET {launch.launch_year})
+                  </p>
+                  :
+                  <p>
+                    {launch.details}
+                    <br/> <br/>
+                    Launch: {moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
+                  </p>                            
              ))
     return (
       <div>
@@ -95,7 +102,7 @@ class SpaceXSearch extends React.Component {
                   className={classes.root}
                   id="standard-basic"
                   label="Start typing the mission name..."
-                  style={{width: '370px'}}
+                  style={{width: '380px'}}
                   InputProps={{
                     ...params.InputProps,
                     className: classes.input
@@ -110,7 +117,7 @@ class SpaceXSearch extends React.Component {
             />
             { selectedLaunch.length > 0
             &&
-            <Paper elevation={3} style={{ background: '#212121', padding: '10px', marginTop: '10px', maxWidth: '350px'}}>
+            <Paper elevation={3} style={{ background: '#212121', padding: '10px', marginTop: '10px', maxWidth: '360px'}}>
              {selectedLaunch} 
             </Paper>
             }
