@@ -76,9 +76,15 @@ class SpaceXList extends React.Component {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
+                  {(flight.tentative_max_precision === 'quarter' || flight.tentative_max_precision === 'year') ?
+                  <Typography style={{ color: 'red'}}>
+                    <i>{flight.mission_name}</i> - Date: TBA 
+                  </Typography> 
+                  :
                   <Typography>
                     <i>{flight.mission_name}</i> - {moment(flight.launch_date_utc).format('D MMM YYYY')} 
-                    </Typography>
+                  </Typography>                                
+                  }
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails style={{textAlign: 'left'}}>
                   {flight.details 
@@ -92,7 +98,7 @@ class SpaceXList extends React.Component {
                   <Typography>
                     Rocket: {flight.rocket.rocket_name}
                     <br/> <br/>
-                    No details available / TBA
+                    No details provided
                   </Typography>
                   }
                 </ExpansionPanelDetails>
