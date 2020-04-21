@@ -27,6 +27,7 @@ const styles = theme => ({
   },
 });
 
+// Search functionality for displaying information about any mission searched by the user
 class SpaceXSearch extends React.Component {
   constructor(props) {
     super(props)
@@ -37,6 +38,7 @@ class SpaceXSearch extends React.Component {
     }
   }
 
+  // Get all launches and add to local array
   componentDidMount() {
     axios
       .get(`https://api.spacexdata.com/v3/launches/`)
@@ -47,13 +49,14 @@ class SpaceXSearch extends React.Component {
       .catch(error => console.error(error))
   }
 
-
+  // Handle the input from the search box and update state to the currently selected mission
   handleInput = (e) => {
     this.setState({selected: e.target.textContent })
   }
 
   render() {
     const { classes } = this.props;
+    {/* Filter the array to only return the details about the currently selected mission */}
     const selectedLaunch = this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
             .map(launch => (
                  <p>
@@ -91,7 +94,7 @@ class SpaceXSearch extends React.Component {
                 />   
               }
             />
-            { this.state.selected
+            { selectedLaunch.length > 0
             &&
             <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '400px'}}>
              {selectedLaunch} 
