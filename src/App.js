@@ -27,6 +27,10 @@ function App() {
           style={{color: 'white'}}>
             GitHub Repo
         </Button>
+        <p>
+          This site is in no way affiliated with <a href="http://spacex.com">SpaceX</a>.
+          API by <a href="https://github.com/r-spacex/SpaceX-API">r-spacex.</a>
+        </p>
     </div>
   );
 }
