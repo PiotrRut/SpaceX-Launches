@@ -70,19 +70,24 @@ class SpaceXSearch extends React.Component {
   render() {
     const { classes } = this.props;
     {/* Filter the array to only return the details about the currently selected mission */}
+    {/* Launches with unconfirmed date (quarterly or yearly precision) will be marked as such */}
     const selectedLaunch = this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
-            .map(launch => (
+            .map(launch => ( 
               launch.tentative_max_precision === 'quarter' || launch.tentative_max_precision === 'year' ?
                   <p>
-                    {launch.details}
+                    {launch.details ? launch.details : 'No details provided'}
                     <br/> <br/>
                     Launch: TBC (NET {launch.launch_year})
                   </p>
                   :
                   <p>
-                    {launch.details}
+                    {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '80px', justifyContent: 'center'}} src={launch.links.mission_patch_small}/>}
+                    <br/> <br/>
+                    {launch.details ? launch.details : 'No details provided'}
                     <br/> <br/>
                     Launch: {moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
+                    <br/>
+                    Launch site: {launch.launch_site.site_name_long}
                   </p>                            
              ))
     return (
