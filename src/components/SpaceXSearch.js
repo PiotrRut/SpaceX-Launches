@@ -75,7 +75,7 @@ class SpaceXSearch extends React.Component {
     const selectedLaunch = this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
             .map(launch => ( 
               launch.tentative_max_precision === 'quarter' || launch.tentative_max_precision === 'year' ?
-                  <p>
+                  <p style={{ color: '#d32f2f'}}>
                     {launch.details ? launch.details : 'No details provided'}
                     <br/> <br/>
                     Launch: TBC (NET {launch.launch_year})
@@ -101,13 +101,14 @@ class SpaceXSearch extends React.Component {
               onChange={this.handleInput}
               options={this.state.allLaunches}
               getOptionLabel={(option) => option.mission_name}
-              fullWidth
+              style={{width: '400px'}}
               renderInput={(params) =>
                 <TextField
                   {...params}
                   className={classes.root}
                   id="standard-basic"
                   label="Start typing the mission name..."
+                  style={{width: '400px'}}
                   InputProps={{
                     ...params.InputProps,
                     className: classes.input
@@ -122,7 +123,7 @@ class SpaceXSearch extends React.Component {
             />
             { selectedLaunch.length > 0
             &&
-            <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '370px'}}>
+            <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '360px'}}>
              {selectedLaunch} 
             </Paper>
             }

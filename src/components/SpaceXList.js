@@ -79,7 +79,7 @@ class SpaceXList extends React.Component {
                 >
                   {/* Launches with unconfirmed date (quarterly or yearly precision) will be marked as such */}
                   {flight.tentative_max_precision === 'quarter' || flight.tentative_max_precision === 'year' ?
-                  <Typography style={{ color: 'red'}}>
+                  <Typography style={{ color: '#d32f2f'}}>
                     <i>{flight.mission_name}</i> - Date: TBC (NET {flight.launch_year})
                   </Typography> 
                   :

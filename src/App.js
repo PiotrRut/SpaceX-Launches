@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid'
 import SpaceXSearch from './components/SpaceXSearch';
 
 
+
 function App() {
   return (
     <div className="App">
@@ -21,14 +22,9 @@ function App() {
               <SpaceXSearch/>
           </Grid>
         </Grid> 
-        <br/>
-        <Button href={"https://github.com/PiotrRut/SpaceX-Launches"}
-          startIcon={<GitHubIcon/>}
-          style={{color: 'white'}}>
-            GitHub Repo
-        </Button>
+        <br/> <br/>
         <p>
-          This site is in no way affiliated with <a href="http://spacex.com">SpaceX</a>.
+          This site is not affiliated with <a href="http://spacex.com">SpaceX</a>.
           API by <a href="https://github.com/r-spacex/SpaceX-API">r-spacex.</a>
         </p>
     </div>
