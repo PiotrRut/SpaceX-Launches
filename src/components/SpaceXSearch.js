@@ -82,6 +82,7 @@ class SpaceXSearch extends React.Component {
                   </p>
                   :
                   <p>
+                    {/* Add the mission badge at the top of the results */}
                     {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '80px', justifyContent: 'center'}} src={launch.links.mission_patch_small}/>}
                     <br/> <br/>
                     {launch.details ? launch.details : 'No details provided yet'}

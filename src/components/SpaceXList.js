@@ -99,6 +99,8 @@ class SpaceXList extends React.Component {
                     Launch: {moment(flight.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
                     <br/>
                     Launching from {flight.launch_site.site_name_long}
+                    <br/>
+                    {flight.links.reddit_campaign && <a href={flight.links.reddit_campaign}>Reddit thread</a>}
                   </Typography> 
                   : 
                   <Typography>
