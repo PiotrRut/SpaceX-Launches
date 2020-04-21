@@ -101,14 +101,13 @@ class SpaceXSearch extends React.Component {
               onChange={this.handleInput}
               options={this.state.allLaunches}
               getOptionLabel={(option) => option.mission_name}
-              style={{maxWidth: '390px'}}
+              fullWidth
               renderInput={(params) =>
                 <TextField
                   {...params}
                   className={classes.root}
                   id="standard-basic"
                   label="Start typing the mission name..."
-                  style={{maxWidth: '390px'}}
                   InputProps={{
                     ...params.InputProps,
                     className: classes.input
@@ -123,7 +122,7 @@ class SpaceXSearch extends React.Component {
             />
             { selectedLaunch.length > 0
             &&
-            <Paper elevation={3} style={{ background: '#212121', padding: '10px', marginTop: '10px', maxWidth: '370px'}}>
+            <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '370px'}}>
              {selectedLaunch} 
             </Paper>
             }
