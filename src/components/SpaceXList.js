@@ -78,7 +78,7 @@ class SpaceXList extends React.Component {
                 >
                   {(flight.tentative_max_precision === 'quarter' || flight.tentative_max_precision === 'year') ?
                   <Typography style={{ color: 'red'}}>
-                    <i>{flight.mission_name}</i> - Date: TBA 
+                    <i>{flight.mission_name}</i> - Date: TBC (NET {flight.launch_year})
                   </Typography> 
                   :
                   <Typography>
