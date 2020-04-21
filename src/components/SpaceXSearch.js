@@ -102,14 +102,14 @@ class SpaceXSearch extends React.Component {
               onChange={this.handleInput}
               options={this.state.allLaunches}
               getOptionLabel={(option) => option.mission_name}
-              style={{width: '400px'}}
+              style={{maxWidth: '400px'}}
               renderInput={(params) =>
                 <TextField
                   {...params}
                   className={classes.root}
                   id="standard-basic"
                   label="Start typing the mission name..."
-                  style={{width: '400px'}}
+                  style={{maxWidth: '400px'}}
                   InputProps={{
                     ...params.InputProps,
                     className: classes.input

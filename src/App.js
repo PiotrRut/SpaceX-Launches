@@ -15,10 +15,10 @@ function App() {
     <div className="App">
         <Nav/>
         <Grid justify="center" align-content="center" container spacing={10}>
-          <Grid item className="List">
+          <Grid item className="List" lg={7}>
               <SpaceXList/>
           </Grid>
-          <Grid item className="Search">
+          <Grid item className="Search" lg={4} sm={2} xs={11}>
               <SpaceXSearch/>
           </Grid>
         </Grid> 
