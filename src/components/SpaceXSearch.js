@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Paper from '@material-ui/core/Paper'
+import { FaRedditAlien } from "react-icons/fa";
 
 import falcon9 from '../assets/falcon9.png'
 import falcon1 from '../assets/falcon1.png'
@@ -190,36 +191,62 @@ class SpaceXSearch extends React.Component {
         fullWidth
         maxWidth="sm"
         >
-          <DialogTitle id="form-dialog-title">{this.state.selected} mission information</DialogTitle>
+          <DialogTitle id="form-dialog-title">{this.state.selected} - Mission Information</DialogTitle>
             <DialogContent>
               {
                 this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
                 .map(launch => ( 
                   <div>
                     <Grid container spacing={7}> 
+
                       <Grid item>
-                        {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '30px', justifyContent: 'left'}} src={falcon9}/>}
-                        {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '30px', justifyContent: 'left'}} src={falconHeavy}/>}
-                        {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '30px', justifyContent: 'left'}} src={falcon1}/>}
+                        {/* Rocket images for mission info dialog */}
+                        {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falcon9}/>}
+                        {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falconHeavy}/>}
+                        {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falcon1}/>}
                       </Grid>
+
                       <Grid item>
+                        {/* More information about the currently selected mission */}
+                        <img alt='patch' style={{ maxWidth: '70px', marginBottom: '15px'}} src={launch.links.mission_patch_small}/>
                         <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
                         <Typography>Launch Site: {launch.launch_site.site_name}</Typography>
+                        {launch.rocket.first_stage.cores[0].land_success && <Typography style={{color: 'green'}}>Landed</Typography>}
+                        {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
+                        {(!launch.upcoming && !launch.launch_success) && <Typography style={{color: 'red'}}>Launch Failed</Typography>}
                         <br/>
-                        <Typography>
+
+                      </Grid>
+
+                      <Grid item>
+                      {/* Information about the payload and the rocket */}
+                      <Typography>
                           Rocket:&nbsp;
                             {launch.rocket.rocket_name}&nbsp;
                             {launch.rocket.rocket_type}&nbsp;
                             {launch.rocket.first_stage.cores[0].block && `Block ${launch.rocket.first_stage.cores[0].block}`}
                         </Typography>
-                        <Typography>Total flights at launch: {launch.rocket.first_stage.cores[0].flight}</Typography>
+                        <Typography>Booster: {launch.rocket.first_stage.cores[0].core_serial}</Typography>
+                        <Typography>No. of flights at launch: {launch.rocket.first_stage.cores[0].flight}</Typography>
+                        {
+                          launch.rocket.first_stage.cores[0].landing_intent ?
+                          <Typography>Landing intended: YES</Typography> :
+                          <Typography>Landing intended: NO</Typography>
+                        }
+                        {
+                          launch.rocket.first_stage.cores[0].reused ?
+                          <Typography>Reused: YES</Typography> :
+                          <Typography>Reused: NO</Typography>
+                        }
+                        <br/>
                         <Typography>Payload: {launch.rocket.second_stage.payloads[0].payload_id}</Typography>
                         <Typography>Type: {launch.rocket.second_stage.payloads[0].payload_type}</Typography>
                         {
-                        launch.rocket.second_stage.payloads[0].payload_mass_kg && 
-                        <Typography>Weight: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
+                          launch.rocket.second_stage.payloads[0].payload_mass_kg && 
+                          <Typography>Weight: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
                         }
                       </Grid>
+
                     </Grid>
                   </div>
                 ))
