@@ -6,16 +6,17 @@ import moment from 'moment'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
-import DialogContentText from '@material-ui/core/DialogContentText'
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Paper from '@material-ui/core/Paper'
-import { FaRedditAlien } from "react-icons/fa";
+import RedditIcon from '@material-ui/icons/Reddit';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import DescriptionIcon from '@material-ui/icons/Description';
+import IconButton from '@material-ui/core/IconButton'
 
 import falcon9 from '../assets/falcon9.png'
 import falcon1 from '../assets/falcon1.png'
@@ -186,7 +187,6 @@ class SpaceXSearch extends React.Component {
         open={this.state.dialogOpen}
         onClose={this.closeDialog}
         aria-labelledby="form-dialog-title"
-        scroll="paper"
         classes={classes}
         fullWidth
         maxWidth="sm"
@@ -208,14 +208,23 @@ class SpaceXSearch extends React.Component {
 
                       <Grid item>
                         {/* More information about the currently selected mission */}
-                        <img alt='patch' style={{ maxWidth: '70px', marginBottom: '15px'}} src={launch.links.mission_patch_small}/>
+                        <img alt='patch' style={{ maxWidth: '70px', marginBottom: '20px'}} src={launch.links.mission_patch_small}/>
                         <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
                         <Typography>Launch Site: {launch.launch_site.site_name}</Typography>
                         {launch.rocket.first_stage.cores[0].land_success && <Typography style={{color: 'green'}}>Landed</Typography>}
                         {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
                         {(!launch.upcoming && !launch.launch_success) && <Typography style={{color: 'red'}}>Launch Failed</Typography>}
                         <br/>
-
+                        {/* Links */}
+                        <IconButton style={{color:'white'}} href={launch.links.reddit_campaign}>
+                          <RedditIcon/>
+                        </IconButton>
+                        <IconButton style={{color:'white'}} href={launch.links.video_link}>
+                          <YouTubeIcon/>
+                        </IconButton>
+                        <IconButton style={{color:'white'}} href={launch.links.article_link}>
+                          <DescriptionIcon/>
+                        </IconButton>
                       </Grid>
 
                       <Grid item>
@@ -245,6 +254,7 @@ class SpaceXSearch extends React.Component {
                           launch.rocket.second_stage.payloads[0].payload_mass_kg && 
                           <Typography>Weight: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
                         }
+                        <Typography>Orbit: {launch.rocket.second_stage.payloads[0].orbit}</Typography>
                       </Grid>
 
                     </Grid>
