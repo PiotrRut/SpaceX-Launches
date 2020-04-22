@@ -191,76 +191,74 @@ class SpaceXSearch extends React.Component {
         maxWidth="sm"
         >
           <DialogTitle id="form-dialog-title">{this.state.selected} - Mission Information</DialogTitle>
-            <DialogContent>
-              {
-                this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
-                .map(launch => ( 
-                  <div>
-                    <Grid container spacing={7}> 
+          <DialogContent>
+            { this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
+            .map(launch => ( 
+              <div>
+                <Grid container spacing={7}> 
 
-                      {/* Rocket images for mission info dialog */}
-                      <Grid item>
-                        {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
-                        {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falconHeavy}/>}
-                        {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falcon1}/>}
-                      </Grid>
+                  {/* Rocket images for mission info dialog */}
+                  <Grid item>
+                    {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
+                    {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falconHeavy}/>}
+                    {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falcon1}/>}
+                  </Grid>
 
-                      {/* More information about the currently selected mission */}
-                      <Grid item>
-                        <img alt='patch' style={{ maxWidth: '70px', marginBottom: '20px'}} src={launch.links.mission_patch_small}/>
-                        <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
-                        <Typography>Launch Site: {launch.launch_site.site_name}</Typography>
+                  {/* More information about the currently selected mission */}
+                  <Grid item>
+                    {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '70px', marginBottom: '20px'}} src={launch.links.mission_patch_small}/>}
+                    <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm A')} UTC</Typography>
+                    <Typography>Site: {launch.launch_site.site_name}</Typography>
 
-                        {/* Was the launch/landing successfull? */}
-                        {launch.rocket.first_stage.cores[0].land_success && <Typography style={{color: 'green'}}>Landed</Typography>}
-                        {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_intent) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
-                        {(!launch.upcoming && !launch.launch_success) && <Typography style={{color: 'red'}}>Launch Failed</Typography>}
-                        <br/>
+                    {/* Was the launch/landing successfull? */}
+                    {launch.rocket.first_stage.cores[0].land_success && <Typography style={{color: 'green'}}>Landed</Typography>}
+                    {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_intent) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
+                    {(!launch.upcoming && !launch.launch_success) && <Typography style={{color: 'red'}}>Launch Failed</Typography>}
+                    <br/>
 
-                        {/* Links */}
-                        <IconButton style={{color:'white', marginLeft:'-13px'}} href={launch.links.reddit_campaign}>
-                          <RedditIcon/>
-                        </IconButton>
-                        <IconButton style={{color:'white'}} href={launch.links.video_link}>
-                          <YouTubeIcon/>
-                        </IconButton>
-                      </Grid>
+                    {/* Links */}
+                    <IconButton style={{color:'white', marginLeft:'-13px'}} href={launch.links.reddit_campaign}>
+                      <RedditIcon/>
+                    </IconButton>
+                    <IconButton style={{color:'white'}} href={launch.links.video_link}>
+                      <YouTubeIcon/>
+                    </IconButton>
+                  </Grid>
 
-                      {/* Information about the payload and the rocket */}
-                      <Grid item>
-                      <Typography>
-                          Rocket:&nbsp;
-                            {launch.rocket.rocket_name}&nbsp;
-                            {launch.rocket.rocket_type}&nbsp;
-                            {launch.rocket.first_stage.cores[0].block && `Block ${launch.rocket.first_stage.cores[0].block}`}
-                        </Typography>
-                        <Typography>Booster: {launch.rocket.first_stage.cores[0].core_serial}</Typography>
-                        <Typography>No. of flights at launch: {launch.rocket.first_stage.cores[0].flight}</Typography>
-                        {
-                          launch.rocket.first_stage.cores[0].landing_intent ?
-                          <Typography>Landing intended: YES</Typography> :
-                          <Typography>Landing intended: NO</Typography>
-                        }
-                        {
-                          launch.rocket.first_stage.cores[0].reused ?
-                          <Typography>Reused: YES</Typography> :
-                          <Typography>Reused: NO</Typography>
-                        }
-                        <br/>
-                        <Typography>Payload: {launch.rocket.second_stage.payloads[0].payload_id}</Typography>
-                        <Typography>Type: {launch.rocket.second_stage.payloads[0].payload_type}</Typography>
-                        {
-                          launch.rocket.second_stage.payloads[0].payload_mass_kg && 
-                          <Typography>Weight: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
-                        }
-                        <Typography>Orbit: {launch.rocket.second_stage.payloads[0].orbit}</Typography>
-                      </Grid>
-
-                    </Grid>
-                  </div>
-                ))
-              }
-            </DialogContent>
+                  {/* Information about the payload and the rocket */}
+                  <Grid item>
+                    <Typography>
+                      Rocket:&nbsp;
+                        {launch.rocket.rocket_name}&nbsp;
+                        {launch.rocket.rocket_type}&nbsp;
+                        {launch.rocket.first_stage.cores[0].block && `Block ${launch.rocket.first_stage.cores[0].block}`}
+                    </Typography>
+                    <Typography>Booster: {launch.rocket.first_stage.cores[0].core_serial}</Typography>
+                    <Typography>No. of flights at launch: {launch.rocket.first_stage.cores[0].flight}</Typography>
+                    {
+                    launch.rocket.first_stage.cores[0].landing_intent ?
+                    <Typography>Landing intended: YES</Typography> :
+                    <Typography>Landing intended: NO</Typography>
+                    }
+                    {
+                      launch.rocket.first_stage.cores[0].reused ?
+                      <Typography>Reused: YES</Typography> :
+                      <Typography>Reused: NO</Typography>
+                    }
+                    <br/>
+                    <Typography>Payload: {launch.rocket.second_stage.payloads[0].payload_id}</Typography>
+                    <Typography>Type: {launch.rocket.second_stage.payloads[0].payload_type}</Typography>
+                    {
+                      launch.rocket.second_stage.payloads[0].payload_mass_kg && 
+                      <Typography>Weight: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
+                    }
+                    <Typography>Orbit: {launch.rocket.second_stage.payloads[0].orbit}</Typography>
+                  </Grid>
+                </Grid>
+              </div>
+            ))
+            }
+          </DialogContent>
         </Dialog>
       </div>
     )
