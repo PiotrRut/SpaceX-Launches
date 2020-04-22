@@ -198,24 +198,27 @@ class SpaceXSearch extends React.Component {
                   <div>
                     <Grid container spacing={7}> 
 
+                      {/* Rocket images for mission info dialog */}
                       <Grid item>
-                        {/* Rocket images for mission info dialog */}
-                        {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falcon9}/>}
-                        {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falconHeavy}/>}
+                        {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
+                        {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falconHeavy}/>}
                         {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falcon1}/>}
                       </Grid>
 
+                      {/* More information about the currently selected mission */}
                       <Grid item>
-                        {/* More information about the currently selected mission */}
                         <img alt='patch' style={{ maxWidth: '70px', marginBottom: '20px'}} src={launch.links.mission_patch_small}/>
                         <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
                         <Typography>Launch Site: {launch.launch_site.site_name}</Typography>
+
+                        {/* Was the launch/landing successfull? */}
                         {launch.rocket.first_stage.cores[0].land_success && <Typography style={{color: 'green'}}>Landed</Typography>}
-                        {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
+                        {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_intent) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
                         {(!launch.upcoming && !launch.launch_success) && <Typography style={{color: 'red'}}>Launch Failed</Typography>}
                         <br/>
+
                         {/* Links */}
-                        <IconButton style={{color:'white'}} href={launch.links.reddit_campaign}>
+                        <IconButton style={{color:'white', marginLeft:'-13px'}} href={launch.links.reddit_campaign}>
                           <RedditIcon/>
                         </IconButton>
                         <IconButton style={{color:'white'}} href={launch.links.video_link}>
@@ -223,8 +226,8 @@ class SpaceXSearch extends React.Component {
                         </IconButton>
                       </Grid>
 
-                      <Grid item>
                       {/* Information about the payload and the rocket */}
+                      <Grid item>
                       <Typography>
                           Rocket:&nbsp;
                             {launch.rocket.rocket_name}&nbsp;
