@@ -3,17 +3,23 @@ import Grid from "@material-ui/core/Grid"
 import axios from "axios"
 import '../App.css'
 import moment from 'moment'
-
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogActions from '@material-ui/core/DialogActions'
+import Button from '@material-ui/core/Button'
+import DialogContentText from '@material-ui/core/DialogContentText'
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Paper from '@material-ui/core/Paper'
+
+import falcon9 from '../assets/falcon9.png'
+import falcon1 from '../assets/falcon1.png'
+import falconHeavy from '../assets/falconHeavy.png'
+
 
 const styles = theme => ({
   root: {
@@ -49,6 +55,7 @@ class SpaceXSearch extends React.Component {
       allLaunches: [{}],
       selected: '',
       itemSelected: false,
+      dialogOpen: false,
     }
   }
 
@@ -68,6 +75,14 @@ class SpaceXSearch extends React.Component {
     this.setState({selected: e.target.textContent })
   }
 
+  // Opening the info dialog
+  openDialog = () => {
+    this.setState({ dialogOpen: true })
+  }
+  // Closing the info dialog
+  closeDialog = () => {
+    this.setState({ dialogOpen: false })
+  }
 
   render() {
     const { classes } = this.props;
@@ -78,7 +93,7 @@ class SpaceXSearch extends React.Component {
       .map(launch => ( 
         launch.tentative_max_precision === 'quarter' || launch.tentative_max_precision === 'year' ?
           <p style={{ color: '#d32f2f'}}>
-            {launch.details ? launch.details : 'No details provided'}
+            {launch.details ? launch.details : 'No details provided for this launch'}
             <br/> <br/>
             Launch: TBC (NET {launch.launch_year})
           </p>
@@ -129,39 +144,88 @@ class SpaceXSearch extends React.Component {
     return (
       <div className={classes.root}>
         <br/>
-            <Typography paragraph>Filter missions (completed and future) &nbsp;</Typography>
-            <Autocomplete
-              id="combo-box-demo"
-              classes={classes}
-              onChange={this.handleInput}
-              options={this.state.allLaunches}
-              getOptionLabel={(option) => option.mission_name}
+        <Typography paragraph>Filter missions (completed and future) &nbsp;</Typography>
+        <Autocomplete
+          id="combo-box-demo"
+          classes={classes}
+          onChange={this.handleInput}
+          options={this.state.allLaunches}
+          getOptionLabel={(option) => option.mission_name}
+          clearOnEscape
+          style={{maxWidth: '420px'}}
+          renderInput={(params) =>
+            <TextField
+              {...params}
+              className={classes.root}
+              id="standard-basic"
+              label="Start typing the mission name..."
               style={{maxWidth: '420px'}}
-              renderInput={(params) =>
-                <TextField
-                  {...params}
-                  className={classes.root}
-                  id="standard-basic"
-                  label="Start typing the mission name..."
-                  style={{maxWidth: '420px'}}
-                  InputProps={{
-                    ...params.InputProps,
-                    className: classes.input
-                  }}
-                  InputLabelProps={{
-                    classes: {
-                      root: classes.cssLabel,
-                    },
-                  }}
-                />   
+              InputProps={{
+                ...params.InputProps,
+                className: classes.input
+              }}
+              InputLabelProps={{
+                classes: {
+                  root: classes.cssLabel,
+                },
+              }}
+            />   
+          }
+        />
+        { selectedLaunch.length > 0
+        &&
+        <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '380px'}}>
+          {selectedLaunch} 
+          <Button varian="small" onClick={this.openDialog} color="primary">More info</Button>
+        </Paper>
+        }
+
+        {/* Information dialog for the currently selected misson ("More info" button) */}
+        <Dialog
+        open={this.state.dialogOpen}
+        onClose={this.closeDialog}
+        aria-labelledby="form-dialog-title"
+        scroll="paper"
+        classes={classes}
+        fullWidth
+        maxWidth="sm"
+        >
+          <DialogTitle id="form-dialog-title">{this.state.selected} mission information</DialogTitle>
+            <DialogContent>
+              {
+                this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
+                .map(launch => ( 
+                  <div>
+                    <Grid container spacing={7}> 
+                      <Grid item>
+                        {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '30px', justifyContent: 'left'}} src={falcon9}/>}
+                        {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '30px', justifyContent: 'left'}} src={falconHeavy}/>}
+                        {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '30px', justifyContent: 'left'}} src={falcon1}/>}
+                      </Grid>
+                      <Grid item>
+                        <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
+                        <Typography>Launch Site: {launch.launch_site.site_name}</Typography>
+                        <br/>
+                        <Typography>
+                          Rocket:&nbsp;
+                            {launch.rocket.rocket_name}&nbsp;
+                            {launch.rocket.rocket_type}&nbsp;
+                            {launch.rocket.first_stage.cores[0].block && `Block ${launch.rocket.first_stage.cores[0].block}`}
+                        </Typography>
+                        <Typography>Total flights at launch: {launch.rocket.first_stage.cores[0].flight}</Typography>
+                        <Typography>Payload: {launch.rocket.second_stage.payloads[0].payload_id}</Typography>
+                        <Typography>Type: {launch.rocket.second_stage.payloads[0].payload_type}</Typography>
+                        {
+                        launch.rocket.second_stage.payloads[0].payload_mass_kg && 
+                        <Typography>Weight: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
+                        }
+                      </Grid>
+                    </Grid>
+                  </div>
+                ))
               }
-            />
-            { selectedLaunch.length > 0
-            &&
-            <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '380px'}}>
-             {selectedLaunch} 
-            </Paper>
-            }
+            </DialogContent>
+        </Dialog>
       </div>
     )
   }
