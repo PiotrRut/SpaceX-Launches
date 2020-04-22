@@ -222,9 +222,6 @@ class SpaceXSearch extends React.Component {
                         <IconButton style={{color:'white'}} href={launch.links.video_link}>
                           <YouTubeIcon/>
                         </IconButton>
-                        <IconButton style={{color:'white'}} href={launch.links.article_link}>
-                          <DescriptionIcon/>
-                        </IconButton>
                       </Grid>
 
                       <Grid item>
