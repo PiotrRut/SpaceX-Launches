@@ -1,9 +1,6 @@
 import React from 'react';
 import './App.css';
 import Nav from './components/Nav'
-import { Typography } from '@material-ui/core';
-import Button from "@material-ui/core/Button";
-import GitHubIcon from '@material-ui/icons/GitHub';
 import SpaceXList from './components/SpaceXList';
 import Grid from '@material-ui/core/Grid'
 import SpaceXSearch from './components/SpaceXSearch';

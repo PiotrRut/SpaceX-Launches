@@ -15,7 +15,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Paper from '@material-ui/core/Paper'
 import RedditIcon from '@material-ui/icons/Reddit';
 import YouTubeIcon from '@material-ui/icons/YouTube';
-import DescriptionIcon from '@material-ui/icons/Description';
 import IconButton from '@material-ui/core/IconButton'
 
 import falcon9 from '../assets/falcon9.png'
