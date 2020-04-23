@@ -39,7 +39,6 @@ class Rockets extends React.Component {
       .get(`https://api.spacexdata.com/v3/rockets`)
       .then(res => {
         this.setState({ rockets: res.data })
-        console.log(this.state.rockets)
       })
       .catch(error => console.error(error))
   }
