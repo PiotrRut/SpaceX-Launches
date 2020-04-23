@@ -19,7 +19,7 @@ import IconButton from '@material-ui/core/IconButton'
 
 import falcon9 from '../assets/falcon9.png'
 import falcon1 from '../assets/falcon1.png'
-import falconHeavy from '../assets/falconHeavy.png'
+import falconHeavy from '../assets/falconheavy.png'
 
 
 const styles = theme => ({
@@ -236,7 +236,7 @@ class SpaceXSearch extends React.Component {
                         {launch.rocket.first_stage.cores[0].block && `B${launch.rocket.first_stage.cores[0].block}`}
                     </Typography>
                     <Typography>Booster: {launch.rocket.first_stage.cores[0].core_serial}</Typography>
-                    <Typography>No. of flights at launch: {launch.rocket.first_stage.cores[0].flight}</Typography>
+                    <Typography>№ of flights at launch: {launch.rocket.first_stage.cores[0].flight}</Typography>
                     {
                     launch.rocket.first_stage.cores[0].landing_intent ?
                     <Typography>Landing intended: YES</Typography> :

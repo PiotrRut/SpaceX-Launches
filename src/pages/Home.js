@@ -33,6 +33,7 @@ function TabPanel (props) {
   )
 }
 
+// Props typechecking
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
