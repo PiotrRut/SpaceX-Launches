@@ -1,21 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 html, body{
+  overflow-x: hidden;
   background-color: #282c34;
   font-family: 'Roboto', sans-serif;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  width: 100vw;
 }
 .App {
+  overflow-x: hidden;
   text-align: center;
   color: white;
-  height: auto;
-  width: 100vw;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);

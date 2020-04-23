@@ -145,7 +145,7 @@ class SpaceXSearch extends React.Component {
     return (
       <div className={classes.root}>
         <br/>
-        <Typography paragraph>Filter missions (completed and future) &nbsp;</Typography>
+        <Typography>Filter missions (completed and future) &nbsp;</Typography>
         <Autocomplete
           id="combo-box-demo"
           classes={classes}
@@ -153,14 +153,14 @@ class SpaceXSearch extends React.Component {
           options={this.state.allLaunches}
           getOptionLabel={(option) => option.mission_name}
           clearOnEscape
-          style={{maxWidth: '420px'}}
+          style={{maxWidth: '440px'}}
           renderInput={(params) =>
             <TextField
               {...params}
               className={classes.root}
               id="standard-basic"
               label="Start typing the mission name..."
-              style={{maxWidth: '420px'}}
+              style={{maxWidth: '440px'}}
               InputProps={{
                 ...params.InputProps,
                 className: classes.input
@@ -175,7 +175,7 @@ class SpaceXSearch extends React.Component {
         />
         { selectedLaunch.length > 0
         &&
-        <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '380px'}}>
+        <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '440px'}}>
           {selectedLaunch} 
           <Button variant="outlined" onClick={this.openDialog} color="primary">More info</Button>
         </Paper>
