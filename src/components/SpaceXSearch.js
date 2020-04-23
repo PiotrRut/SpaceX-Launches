@@ -195,12 +195,12 @@ class SpaceXSearch extends React.Component {
             { this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
             .map(launch => ( 
               <div>
-                <Grid container spacing={7}> 
+                <Grid container spacing={6}> 
 
                   {/* Rocket images for mission info dialog */}
                   <Grid item>
                     {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
-                    {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falconHeavy}/>}
+                    {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '53px', justifyContent: 'left'}} src={falconHeavy}/>}
                     {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falcon1}/>}
                   </Grid>
 
@@ -214,6 +214,7 @@ class SpaceXSearch extends React.Component {
                     {launch.rocket.first_stage.cores[0].land_success && <Typography style={{color: 'green'}}>Landed</Typography>}
                     {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_intent) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
                     {(!launch.upcoming && !launch.launch_success) && <Typography style={{color: 'red'}}>Launch Failed</Typography>}
+                    {launch.upcoming && <Typography style={{color: '#1976d2'}}>Upcoming Mission</Typography>}
                     <br/>
 
                     {/* Links */}
@@ -231,7 +232,7 @@ class SpaceXSearch extends React.Component {
                       Rocket:&nbsp;
                         {launch.rocket.rocket_name}&nbsp;
                         {launch.rocket.rocket_type}&nbsp;
-                        {launch.rocket.first_stage.cores[0].block && `Block ${launch.rocket.first_stage.cores[0].block}`}
+                        {launch.rocket.first_stage.cores[0].block && `B${launch.rocket.first_stage.cores[0].block}`}
                     </Typography>
                     <Typography>Booster: {launch.rocket.first_stage.cores[0].core_serial}</Typography>
                     <Typography>No. of flights at launch: {launch.rocket.first_stage.cores[0].flight}</Typography>
@@ -246,13 +247,13 @@ class SpaceXSearch extends React.Component {
                       <Typography>Reused: NO</Typography>
                     }
                     <br/>
-                    <Typography>Payload: {launch.rocket.second_stage.payloads[0].payload_id}</Typography>
-                    <Typography>Type: {launch.rocket.second_stage.payloads[0].payload_type}</Typography>
+                    <Typography>Payload: {launch.rocket.second_stage.payloads[0].payload_type}</Typography>
                     {
                       launch.rocket.second_stage.payloads[0].payload_mass_kg && 
-                      <Typography>Weight: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
+                      <Typography>Mass: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
                     }
                     <Typography>Orbit: {launch.rocket.second_stage.payloads[0].orbit}</Typography>
+                    <Typography>Customer: {launch.rocket.second_stage.payloads[0].customers[0]}</Typography>
                   </Grid>
                 </Grid>
               </div>
