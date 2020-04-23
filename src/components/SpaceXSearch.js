@@ -201,7 +201,7 @@ class SpaceXSearch extends React.Component {
                   <Grid item>
                     {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
                     {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '53px', justifyContent: 'left'}} src={falconHeavy}/>}
-                    {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '25px', justifyContent: 'left'}} src={falcon1}/>}
+                    {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '28px', justifyContent: 'left'}} src={falcon1}/>}
                   </Grid>
 
                   {/* More information about the currently selected mission */}
@@ -209,6 +209,7 @@ class SpaceXSearch extends React.Component {
                     {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '70px', marginBottom: '20px'}} src={launch.links.mission_patch_small}/>}
                     <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm A')} UTC</Typography>
                     <Typography>Site: {launch.launch_site.site_name}</Typography>
+                    <Typography>Flight №: {launch.flight_number}</Typography>
 
                     {/* Was the launch/landing successfull? */}
                     {launch.rocket.first_stage.cores[0].land_success && <Typography style={{color: 'green'}}>Landed</Typography>}
