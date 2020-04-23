@@ -177,7 +177,7 @@ class SpaceXSearch extends React.Component {
         &&
         <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '380px'}}>
           {selectedLaunch} 
-          <Button varian="small" onClick={this.openDialog} color="primary">More info</Button>
+          <Button variant="outlined" onClick={this.openDialog} color="primary">More info</Button>
         </Paper>
         }
 
