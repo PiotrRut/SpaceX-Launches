@@ -19,7 +19,7 @@ import IconButton from '@material-ui/core/IconButton'
 
 import falcon9 from '../assets/falcon9.png'
 import falcon1 from '../assets/falcon1.png'
-import falconHeavy from '../assets/falconheavy.png'
+import falconHeavy from '../assets/falconHeavy.png'
 
 
 const styles = theme => ({

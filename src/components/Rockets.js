@@ -12,7 +12,7 @@ import moment from 'moment'
 
 import falcon9 from '../assets/falcon9.png'
 import falcon1 from '../assets/falcon1.png'
-import falconheavy from '../assets/falconheavy.png'
+import falconHeavy from '../assets/falconHeavy.png'
 import starship from '../assets/starship.png'
 
 const styles = theme => ({
@@ -67,7 +67,7 @@ class Rockets extends React.Component {
                 <Grid item sm={2} xs={3}> 
                   {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '22px', justifyContent: 'bottom'}} src={falcon1}/>}
                   {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'bottom'}} src={falcon9}/>}
-                  {rocket.rocket_id === 'falconheavy' && <img alt='falconheavy' style={{ maxHeight: '350px', justifyContent: 'bottom'}} src={falconheavy}/>}
+                  {rocket.rocket_id === 'falconheavy' && <img alt='falconheavy' style={{ maxHeight: '350px', justifyContent: 'bottom'}} src={falconHeavy}/>}
                   {rocket.rocket_id === 'starship' && <img alt='starship' style={{ maxHeight: '400px', justifyContent: 'bottom'}} src={starship}/>}
                   <Typography>{rocket.rocket_name}</Typography>
                   {rocket.active && <Typography style={{color: 'green'}}>ACTIVE</Typography>}
@@ -105,7 +105,7 @@ class Rockets extends React.Component {
                   {/* Rocket images for rocket info dialog */}
                   <Grid item>
                     {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
-                    {rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '50px', justifyContent: 'left'}} src={falconheavy}/>}
+                    {rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '50px', justifyContent: 'left'}} src={falconHeavy}/>}
                     {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '28px', justifyContent: 'left'}} src={falcon1}/>}
                     {rocket.rocket_id === 'starship' && <img alt='falcon1' style={{ maxWidth: '37px', justifyContent: 'left'}} src={starship}/>}
                   </Grid>
