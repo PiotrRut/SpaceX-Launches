@@ -96,9 +96,10 @@ class Rockets extends React.Component {
         aria-labelledby="form-dialog-title"
         classes={classes}
         fullWidth
+        scroll="body"
         maxWidth="sm"
         >
-          <DialogContent>
+          <DialogContent style={{ overflow: "hidden"}}>
             { this.state.rockets.filter(rocket => rocket.rocket_id === this.state.selectedRocket)
             .map(rocket => ( 
               <div>
@@ -107,7 +108,7 @@ class Rockets extends React.Component {
                   {/* Rocket images for rocket info dialog */}
                   <Grid item>
                     {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
-                    {rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '50px', justifyContent: 'left'}} src={falconHeavy}/>}
+                    {rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '55px', justifyContent: 'left'}} src={falconHeavy}/>}
                     {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '28px', justifyContent: 'left'}} src={falcon1}/>}
                     {rocket.rocket_id === 'starship' && <img alt='falcon1' style={{ maxHeight: '300px', justifyContent: 'left'}} src={starship3}/>}
                   </Grid>
@@ -138,6 +139,7 @@ class Rockets extends React.Component {
                     <br/>
                     <Typography>Engines: {rocket.engines.number}</Typography>
                     <Typography>Eng. type: {`${rocket.engines.type}`.charAt(0).toUpperCase() + `${rocket.engines.type}`.slice(1)}</Typography>
+                    <Typography>Thrust: {rocket.engines.thrust_sea_level.kN}kN</Typography>
                     <Typography>Landing legs: {rocket.landing_legs.number}</Typography>
                     {rocket.success_rate_pct > 0 && <Typography>Success rate: {rocket.success_rate_pct}%</Typography>}
                   </Grid>
