@@ -14,6 +14,7 @@ import falcon9 from '../assets/falcon9.png'
 import falcon1 from '../assets/falcon1.png'
 import falconHeavy from '../assets/falconHeavy.png'
 import starship from '../assets/starship.png'
+import starship2 from '../assets/starship2.png'
 
 const styles = theme => ({
   paper: { // set colour of the paper dialog
@@ -68,7 +69,7 @@ class Rockets extends React.Component {
                   {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '22px', justifyContent: 'bottom'}} src={falcon1}/>}
                   {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'bottom'}} src={falcon9}/>}
                   {rocket.rocket_id === 'falconheavy' && <img alt='falconheavy' style={{ maxHeight: '350px', justifyContent: 'bottom'}} src={falconHeavy}/>}
-                  {rocket.rocket_id === 'starship' && <img alt='starship' style={{ maxHeight: '400px', justifyContent: 'bottom'}} src={starship}/>}
+                  {rocket.rocket_id === 'starship' && <img alt='starship' style={{ maxHeight: '400px', justifyContent: 'bottom'}} src={starship2}/>}
                   <Typography>{rocket.rocket_name}</Typography>
                   {rocket.active && <Typography style={{color: 'green'}}>ACTIVE</Typography>}
                   {(!rocket.active && rocket.success_rate_pct > 0) && <Typography style={{color: 'red'}}>RETIRED</Typography>}
@@ -107,7 +108,7 @@ class Rockets extends React.Component {
                     {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
                     {rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '50px', justifyContent: 'left'}} src={falconHeavy}/>}
                     {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '28px', justifyContent: 'left'}} src={falcon1}/>}
-                    {rocket.rocket_id === 'starship' && <img alt='falcon1' style={{ maxWidth: '36px', justifyContent: 'left'}} src={starship}/>}
+                    {rocket.rocket_id === 'starship' && <img alt='falcon1' style={{ maxWidth: '40px', justifyContent: 'left'}} src={starship2}/>}
                   </Grid>
 
                   {/* More information about the currently selected rocket */}
