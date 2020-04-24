@@ -73,10 +73,14 @@ class SpaceXList extends React.Component {
               <Typography style={{ color: '#d32f2f'}}>
                 <i>{flight.mission_name}</i> - Date: TBC (NET {flight.launch_year})
               </Typography> 
-              :
+              : flight.tentative_max_precision === 'hour' || flight.tentative_max_precision === 'hour' ?
               <Typography>
                 <i>{flight.mission_name}</i> - {moment(flight.launch_date_utc).format('D MMM YYYY')} 
               </Typography>                                
+              : 
+              <Typography>
+                <i>{flight.mission_name}</i> - {moment(flight.launch_date_utc).format('MMM YYYY')}
+              </Typography>
               }
             </ExpansionPanelSummary>
             <ExpansionPanelDetails style={{textAlign: 'left'}}>

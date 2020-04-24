@@ -137,9 +137,13 @@ class SpaceXSearch extends React.Component {
 
             {launch.details ? launch.details : 'No details provided for this launch'}
             <br/> <br/> 
-            Launch: {moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
+            {launch.tentative_max_precision === 'month' ?
+              <Typography>Launch: {moment(launch.launch_date_utc).format('MMM YYYY')}</Typography>
+              :
+              <Typography>Launch: {moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
+            }
             <br/>
-            Launch site: {launch.launch_site.site_name_long}
+            Site: {launch.launch_site.site_name_long}
           </p>                            
       ))
     return (
