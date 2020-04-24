@@ -137,6 +137,7 @@ class Rockets extends React.Component {
                     <Typography>Engines: {rocket.engines.number}</Typography>
                     <Typography>Eng. type: {`${rocket.engines.type}`.charAt(0).toUpperCase() + `${rocket.engines.type}`.slice(1)}</Typography>
                     <Typography>Landing legs: {rocket.landing_legs.number}</Typography>
+                    {rocket.success_rate_pct > 0 && <Typography>Success rate: {rocket.success_rate_pct}%</Typography>}
                   </Grid>
 
                 </Grid>
