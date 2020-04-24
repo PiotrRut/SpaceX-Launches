@@ -95,7 +95,7 @@ export default function Home() {
           <Grid item className="List" lg={6}>
               <SpaceXList/>
           </Grid>
-          <Grid item className="Search" lg={4} sm={2} xs={12}>
+          <Grid item className="Search" lg={5} sm={7} xs={12} md={7}>
               <SpaceXSearch/>
           </Grid>
         </Grid> 

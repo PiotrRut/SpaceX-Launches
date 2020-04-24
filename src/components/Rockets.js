@@ -58,7 +58,7 @@ class Rockets extends React.Component {
     const { classes } = this.props;
     return (
       <div className="About">
-        <Typography variant="h4" style={{marginBottom: '5px'}}>SpaceX Rockets</Typography>
+        <Typography variant="h5" style={{marginBottom: '5px'}}>SpaceX Rockets</Typography>
         <Typography>
           Below are the planned and retired rockets, as well as current lineup (not to scale)
         </Typography>
