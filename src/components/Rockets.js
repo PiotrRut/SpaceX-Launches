@@ -58,7 +58,7 @@ class Rockets extends React.Component {
       <div className="About">
         <Typography variant="h4" style={{marginBottom: '10px'}}>SpaceX Rockets</Typography>
         <Typography>
-          This is the current SpaceX lineup, including active, retired, and unfinished vehicles
+          Below is the current SpaceX lineup, including active, retired, and unfinished vehicles
         </Typography>
         <br/>
         <Grid container justify="center" direction="row" alignItems="flex-end" spacing={2}>
@@ -79,7 +79,7 @@ class Rockets extends React.Component {
                     key={rocket.rocket_id} 
                     onClick={() => { this.setState({ selectedRocket: rocket.rocket_id, selRockName: rocket.rocket_name}, () => { this.openDialog()})} }
                   >
-                      More info
+                    Info
                   </Button>
                 </Grid>
             ))

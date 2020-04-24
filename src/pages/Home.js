@@ -14,6 +14,7 @@ import SpaceXSearch from '../components/SpaceXSearch';
 import SpaceXList from '../components/SpaceXList';
 import Rockets from '../components/Rockets'
 import About from '../components/About'
+import Stats from '../components/Stats'
 
 
 function TabPanel (props) {
@@ -81,7 +82,8 @@ export default function Home() {
           >
             <Tab label="Missions" {...a11yProps(0)} />
             <Tab label="Rockets" {...a11yProps(1)} />
-            <Tab label="About" {...a11yProps(2)} />
+            <Tab label="Stats" {...a11yProps(2)} />
+            <Tab label="About" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
 
@@ -104,8 +106,13 @@ export default function Home() {
           <Rockets/>
         </TabPanel>
 
-        {/* Contents of Tab 3: About */}
+        {/* Contents of Tab 3: Stats */}
         <TabPanel value={value} index={2}>
+          <Stats/>
+        </TabPanel>
+
+        {/* Contents of Tab 4: About */}
+        <TabPanel value={value} index={3}>
           <About/>
         </TabPanel>
 

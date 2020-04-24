@@ -106,33 +106,33 @@ class SpaceXSearch extends React.Component {
 
             {/* If landing has failed and fell in the water */}
             {(!launch.upcoming && launch.rocket.first_stage.cores[0].landing_type === 'Ocean' && !launch.rocket.first_stage.cores[0].land_success) &&
-              <p style={{color: '#d32f2f'}}>
+              <Typography style={{color: '#d32f2f'}}>
                 Water Landing - Failed
-              </p>
+              </Typography>
             }
             {/* If landing has failed */}                  
-            {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type === 'ASDS') && 
-              <p style={{color: '#d32f2f'}}>
+            {(!launch.upcoming && launch.launch_success && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type === 'ASDS') && 
+              <Typography style={{color: '#d32f2f'}}>
                 Landing Failed
-              </p>
+              </Typography>
             }
             {/* If launch has failed */}
             {(!launch.upcoming && !launch.launch_success) && 
-              <p style={{color: '#d32f2f'}}>
+              <Typography style={{color: '#d32f2f'}}>
                 Launch Failed
-              </p>
+              </Typography>
             }
             {/* If landing has been successfull and fell in the water */}
             {(!launch.upcoming && launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type === 'Ocean') && 
-              <p style={{color: '#1976d2'}}>
+              <Typography style={{color: '#1976d2'}}>
                 Water Landing - Successful
-              </p>
+              </Typography>
             }
             {/* If landing has been sucessfull */}
             {(!launch.upcoming && launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type !== 'Ocean') && 
-              <p style={{color: '#388e3c'}}>
+              <Typography style={{color: '#388e3c'}}>
                 Landing Successful
-              </p>
+              </Typography>
             }
 
             {launch.details ? launch.details : 'No details provided for this launch'}
