@@ -58,9 +58,9 @@ class Rockets extends React.Component {
     const { classes } = this.props;
     return (
       <div className="About">
-        <Typography variant="h4" style={{marginBottom: '10px'}}>SpaceX Rockets</Typography>
+        <Typography variant="h4" style={{marginBottom: '5px'}}>SpaceX Rockets</Typography>
         <Typography>
-          Below is the current SpaceX lineup, including active, retired, and unfinished vehicles
+          Below are the planned and retired rockets, as well as current lineup (not to scale)
         </Typography>
         <br/>
         <Grid container justify="center" direction="row" alignItems="flex-end" spacing={2}>
@@ -68,9 +68,9 @@ class Rockets extends React.Component {
             this.state.rockets.map(rocket => (
                 <Grid item sm={2} xs={3}> 
                   {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '22px', justifyContent: 'bottom'}} src={falcon1}/>}
-                  {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'bottom'}} src={falcon9}/>}
-                  {rocket.rocket_id === 'falconheavy' && <img alt='falconheavy' style={{ maxHeight: '350px', justifyContent: 'bottom'}} src={falconHeavy}/>}
-                  {rocket.rocket_id === 'starship' && <img alt='starship' style={{ maxHeight: '400px', justifyContent: 'bottom'}} src={starship3}/>}
+                  {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '23px', justifyContent: 'bottom'}} src={falcon9}/>}
+                  {rocket.rocket_id === 'falconheavy' && <img alt='falconheavy' style={{ maxHeight: '310px', justifyContent: 'bottom'}} src={falconHeavy}/>}
+                  {rocket.rocket_id === 'starship' && <img alt='starship' style={{ maxHeight: '430px', justifyContent: 'bottom'}} src={starship3}/>}
                   <Typography>{rocket.rocket_name}</Typography>
                   {rocket.active && <Typography style={{color: 'green'}}>ACTIVE</Typography>}
                   {(!rocket.active && rocket.success_rate_pct > 0) && <Typography style={{color: 'red'}}>RETIRED</Typography>}

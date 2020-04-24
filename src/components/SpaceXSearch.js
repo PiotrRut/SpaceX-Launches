@@ -137,6 +137,7 @@ class SpaceXSearch extends React.Component {
 
             {launch.details ? launch.details : 'No details provided for this launch'}
             <br/> <br/> 
+            {/* If the day of the month of the launch is unsure, display only the month */}
             {launch.tentative_max_precision === 'month' ?
               <Typography>Launch: {moment(launch.launch_date_utc).format('MMM YYYY')}</Typography>
               :
@@ -180,8 +181,8 @@ class SpaceXSearch extends React.Component {
         { selectedLaunch.length > 0
         &&
         <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '440px'}}>
+          <Button variant="outlined" onClick={this.openDialog} color="primary" size="small">Click for Details</Button>
           {selectedLaunch} 
-          <Button variant="outlined" onClick={this.openDialog} color="primary">More info</Button>
         </Paper>
         }
 
@@ -193,9 +194,10 @@ class SpaceXSearch extends React.Component {
         classes={classes}
         fullWidth
         maxWidth="sm"
+        scroll="body"
         >
           <DialogTitle id="form-dialog-title">{this.state.selected} - Mission Information</DialogTitle>
-          <DialogContent>
+          <DialogContent style={{ overflow: "hidden"}}>
             { this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
             .map(launch => ( 
               <div>
@@ -252,13 +254,18 @@ class SpaceXSearch extends React.Component {
                       <Typography>Reused: NO</Typography>
                     }
                     <br/>
-                    <Typography>Payload: {launch.rocket.second_stage.payloads[0].payload_type}</Typography>
+                    <Typography>PL Type: {launch.rocket.second_stage.payloads[0].payload_type}</Typography>
+                    <Typography>Payloads:</Typography>
+                    {
+                      launch.rocket.second_stage.payloads.map(pl => (
+                        <Typography>{pl.payload_id}</Typography>
+                      ))
+                    }
                     {
                       launch.rocket.second_stage.payloads[0].payload_mass_kg && 
                       <Typography>Mass: {launch.rocket.second_stage.payloads[0].payload_mass_kg}kg</Typography>
                     }
                     <Typography>Orbit: {launch.rocket.second_stage.payloads[0].orbit}</Typography>
-                    <Typography>Customer: {launch.rocket.second_stage.payloads[0].customers[0]}</Typography>
                   </Grid>
                 </Grid>
               </div>
