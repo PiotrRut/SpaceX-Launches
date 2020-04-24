@@ -131,17 +131,16 @@ class Rockets extends React.Component {
 
                   {/* Information about the payload and engines */}
                   <Grid item>
-                    <Typography>Payloads weights:</Typography>
-                    <br/>
-                    {rocket.payload_weights.map(pl => (
-                      <Typography>{`${pl.id}`.toUpperCase()}: {pl.kg}kg</Typography>
-                    ))}
-                    <br/>
                     <Typography>Engines: {rocket.engines.number}</Typography>
                     <Typography>Eng. type: {`${rocket.engines.type}`.charAt(0).toUpperCase() + `${rocket.engines.type}`.slice(1)}</Typography>
                     <Typography>Thrust: {rocket.engines.thrust_sea_level.kN}kN</Typography>
                     <Typography>Landing legs: {rocket.landing_legs.number}</Typography>
                     {rocket.success_rate_pct > 0 && <Typography>Success rate: {rocket.success_rate_pct}%</Typography>}
+                    <br/>
+                    <Typography><b>Payload limits:</b></Typography>
+                    {rocket.payload_weights.map(pl => (
+                      <Typography>{`${pl.id}`.toUpperCase()}: {pl.kg}kg</Typography>
+                    ))}
                   </Grid>
 
                 </Grid>

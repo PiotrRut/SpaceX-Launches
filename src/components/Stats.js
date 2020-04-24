@@ -27,6 +27,9 @@ class Stats extends React.Component {
     let landedMissions = 0
     let f9Launches = 0
     let fHeavyLaunches = 0
+    let f1Launches = 0
+    let dragon1Flights = 0
+    let crewDragonFlights = 0
 
     // Computer number of Starlink satellites in space
     const starlink =
@@ -59,6 +62,35 @@ class Stats extends React.Component {
         fHeavyLaunches += 1;
       }
     })
+
+    // Compute number of Falcon Heavy launches
+    this.state.launches.forEach(launch => {
+      if (launch.flight_number >= 1 && launch.rocket.rocket_id === 'falcon1') {
+        f1Launches += 1;
+      }
+    })
+    
+    // Compute number of Dragon 1 flights
+    this.state.launches.forEach(launch => {
+      if (launch.flight_number >= 1 
+        && launch.launch_success 
+        && launch.rocket.second_stage.payloads[0].payload_type.includes('Dragon') 
+        && launch.rocket.second_stage.payloads[0].payload_id.indexOf('Dragon Qualification Unit') === -1
+        && launch.rocket.second_stage.payloads[0].payload_id.indexOf('Crew') === -1
+        ) {
+        dragon1Flights += 1;
+      }
+    })    
+
+    // Compute number of Crew Dragon flights
+    this.state.launches.forEach(launch => {
+      if (launch.flight_number >= 1 
+        && launch.launch_success 
+        && launch.rocket.second_stage.payloads[0].payload_type.includes('Crew') 
+        ) {
+        crewDragonFlights += 1;
+      }
+    })    
 
 
     return (
@@ -100,11 +132,22 @@ class Stats extends React.Component {
             </Paper>
           </Grid>
 
+          {/* All Falcon 1 launches in total  */}
+          <Grid item>
+            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
+            <Typography variant="h5">
+              № of Falcon 1 launches:
+            </Typography>
+            <br/>
+            <Typography variant="h3"> <span role="img" aria-label="satellite">🚀</span> {f1Launches}</Typography>
+            </Paper>
+          </Grid>          
+
           {/* All Falcon 9 launches in total (excluding Amos-6 which never launched due to launch pad explosion) */}
           <Grid item>
             <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
             <Typography variant="h5">
-              № Falcon9 launches:
+              № of Falcon9 launches:
             </Typography>
             <Typography paragraph>
               (excluding Amos-6)
@@ -117,10 +160,36 @@ class Stats extends React.Component {
           <Grid item>
             <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
             <Typography variant="h5">
-              № Falcon Heavy launches:
+              № of Falcon Heavy launches:
             </Typography>
             <br/>
             <Typography variant="h3"> <span role="img" aria-label="satellite">🚀</span> {fHeavyLaunches}</Typography>
+            </Paper>
+          </Grid>
+
+          {/* All Dragon 1 flights in total  */}
+          <Grid item>
+            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
+            <Typography variant="h5">
+              № of Dragon 1 launches:
+            </Typography>
+            <Typography paragraph>
+              (including COTS-1 & COTS-1)
+            </Typography>
+            <Typography variant="h3"> <span role="img" aria-label="satellite">🛰</span> {dragon1Flights}</Typography>
+            </Paper>
+          </Grid>
+
+          {/* All Crew Dragon flights in total  */}
+          <Grid item>
+            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
+            <Typography variant="h5">
+              № of Crew Dragon launches:
+            </Typography>
+            <Typography paragraph>
+              (including 2 unmanned flights)
+            </Typography>
+            <Typography variant="h3"> <span role="img" aria-label="satellite">👨🏻‍🚀</span> {crewDragonFlights}</Typography>
             </Paper>
           </Grid>
 
