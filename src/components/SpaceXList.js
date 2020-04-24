@@ -68,7 +68,8 @@ class SpaceXList extends React.Component {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              {/* Launches with unconfirmed date (quarterly or yearly precision) will be marked as such */}
+              {/* Launches with unconfirmed date (quarterly or yearly precision) will be marked as such. If the
+              day of the month of the launch is unsure (monthly precision) only the month is displayed */}
               {flight.tentative_max_precision === 'quarter' || flight.tentative_max_precision === 'year' ?
               <Typography style={{ color: '#d32f2f'}}>
                 <i>{flight.mission_name}</i> - Date: TBC (NET {flight.launch_year})
@@ -91,7 +92,12 @@ class SpaceXList extends React.Component {
                 <br/> <br/>
                 {flight.details}
                 <br/> <br/>
-                Launch: {moment(flight.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC
+                {/* If the day of the month of the launch is unsure, display only the month */}
+                {flight.tentative_max_precision === 'month' ?
+                  <Typography>Launch: {moment(flight.launch_date_utc).format('MMM YYYY')}</Typography>
+                  :
+                  <Typography>Launch: {moment(flight.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
+                }
                 <br/>
                 Launching from {flight.launch_site.site_name_long}
                 <br/>
