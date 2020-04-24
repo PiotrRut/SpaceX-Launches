@@ -8,7 +8,7 @@ class About extends React.Component {
   render() {
     return (
       <div className="About">
-        <Typography variant="h4">About</Typography>
+        <Typography variant="h5">About</Typography>
         <br/>
         <Typography paragraph>
           This website was made for educational and fan purposes, and has no affiliation with&nbsp; 

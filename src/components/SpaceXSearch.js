@@ -151,7 +151,6 @@ class SpaceXSearch extends React.Component {
       <div className={classes.root}>
         <br/>
         <Autocomplete
-          id="combo-box-demo"
           classes={classes}
           onChange={this.handleInput}
           options={this.state.allLaunches}
@@ -162,7 +161,6 @@ class SpaceXSearch extends React.Component {
             <TextField
               {...params}
               className={classes.root}
-              id="standard-basic"
               label="Start typing the mission name..."
               style={{maxWidth: '540px'}}
               InputProps={{
@@ -196,7 +194,7 @@ class SpaceXSearch extends React.Component {
         maxWidth="sm"
         scroll="body"
         >
-          <DialogTitle id="form-dialog-title">{this.state.selected} - Mission Information</DialogTitle>
+          <DialogTitle id="form-dialog-title">{this.state.selected}</DialogTitle>
           <DialogContent style={{ overflow: "hidden"}}>
             { this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
             .map(launch => ( 
@@ -213,7 +211,19 @@ class SpaceXSearch extends React.Component {
                   {/* More information about the currently selected mission */}
                   <Grid item>
                     {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '70px', marginBottom: '20px'}} src={launch.links.mission_patch_small}/>}
-                    <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm A')} UTC</Typography>
+                    {/* Launches with unconfirmed date (quarterly or yearly precision) will be marked as such. If the
+                    day of the month of the launch is unsure (monthly precision) only the month is displayed */}
+                    {launch.tentative_max_precision === 'month' ?
+                      <Typography>{moment(launch.launch_date_utc).format('MMM YYYY')}</Typography>
+                      :
+                      launch.tentative_max_precision === 'quarter' || launch.tentative_max_precision === 'year' ?
+                      <Typography style={{ color: '#d32f2f'}}>
+                        TBC (NET {launch.launch_year})
+                      </Typography>
+                      : 
+                      <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
+                    }
+                    
                     <Typography>Site: {launch.launch_site.site_name}</Typography>
                     <Typography>Flight №: {launch.flight_number}</Typography>
 
