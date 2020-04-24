@@ -107,7 +107,7 @@ class Rockets extends React.Component {
                     {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
                     {rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '50px', justifyContent: 'left'}} src={falconHeavy}/>}
                     {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '28px', justifyContent: 'left'}} src={falcon1}/>}
-                    {rocket.rocket_id === 'starship' && <img alt='falcon1' style={{ maxWidth: '37px', justifyContent: 'left'}} src={starship}/>}
+                    {rocket.rocket_id === 'starship' && <img alt='falcon1' style={{ maxWidth: '36px', justifyContent: 'left'}} src={starship}/>}
                   </Grid>
 
                   {/* More information about the currently selected rocket */}
@@ -137,9 +137,6 @@ class Rockets extends React.Component {
                     <Typography>Engines: {rocket.engines.number}</Typography>
                     <Typography>Eng. type: {`${rocket.engines.type}`.charAt(0).toUpperCase() + `${rocket.engines.type}`.slice(1)}</Typography>
                     <Typography>Landing legs: {rocket.landing_legs.number}</Typography>
-                  </Grid>
-
-                  <Grid item>
                   </Grid>
 
                 </Grid>
