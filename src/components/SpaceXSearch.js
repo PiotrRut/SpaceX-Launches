@@ -223,13 +223,13 @@ class SpaceXSearch extends React.Component {
                       : 
                       <Typography>{moment(launch.launch_date_utc).format('D MMM YYYY, h:mm:ss A')} UTC</Typography>
                     }
-                    
+
                     <Typography>Site: {launch.launch_site.site_name}</Typography>
                     <Typography>Flight №: {launch.flight_number}</Typography>
 
                     {/* Was the launch/landing successfull? */}
                     {launch.rocket.first_stage.cores[0].land_success && <Typography style={{color: 'green'}}>Landed</Typography>}
-                    {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_intent) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
+                    {(!launch.upcoming && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_intent && launch.launch_success) && <Typography style={{color: 'red'}}>Landing Failed</Typography>}
                     {(!launch.upcoming && !launch.launch_success) && <Typography style={{color: 'red'}}>Launch Failed</Typography>}
                     {launch.upcoming && <Typography style={{color: '#1976d2'}}>Upcoming Mission</Typography>}
                     <br/>
@@ -277,6 +277,7 @@ class SpaceXSearch extends React.Component {
                     }
                     <Typography>Orbit: {launch.rocket.second_stage.payloads[0].orbit}</Typography>
                   </Grid>
+                  
                 </Grid>
               </div>
             ))

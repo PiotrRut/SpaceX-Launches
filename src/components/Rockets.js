@@ -66,24 +66,24 @@ class Rockets extends React.Component {
         <Grid container justify="center" direction="row" alignItems="flex-end" spacing={2}>
           {
             this.state.rockets.map(rocket => (
-                <Grid item sm={2} xs={3}> 
-                  {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '22px', justifyContent: 'bottom'}} src={falcon1}/>}
-                  {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '23px', justifyContent: 'bottom'}} src={falcon9}/>}
-                  {rocket.rocket_id === 'falconheavy' && <img alt='falconheavy' style={{ maxHeight: '310px', justifyContent: 'bottom'}} src={falconHeavy}/>}
-                  {rocket.rocket_id === 'starship' && <img alt='starship' style={{ maxHeight: '430px', justifyContent: 'bottom'}} src={starship3}/>}
-                  <Typography>{rocket.rocket_name}</Typography>
-                  {rocket.active && <Typography style={{color: 'green'}}>ACTIVE</Typography>}
-                  {(!rocket.active && rocket.success_rate_pct > 0) && <Typography style={{color: 'red'}}>RETIRED</Typography>}
-                  {(!rocket.active && rocket.success_rate_pct === 0) && <Typography style={{color: '#1976d2'}}>PLANNED</Typography>}
-                  <Button 
-                    size="small"
-                    style={{color:'white'}}
-                    key={rocket.rocket_id} 
-                    onClick={() => { this.setState({ selectedRocket: rocket.rocket_id, selRockName: rocket.rocket_name}, () => { this.openDialog()})} }
-                  >
-                    Info
-                  </Button>
-                </Grid>
+              <Grid item sm={2} xs={3}> 
+                {rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '22px', justifyContent: 'bottom'}} src={falcon1}/>}
+                {rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '23px', justifyContent: 'bottom'}} src={falcon9}/>}
+                {rocket.rocket_id === 'falconheavy' && <img alt='falconheavy' style={{ maxHeight: '310px', justifyContent: 'bottom'}} src={falconHeavy}/>}
+                {rocket.rocket_id === 'starship' && <img alt='starship' style={{ maxHeight: '430px', justifyContent: 'bottom'}} src={starship3}/>}
+                <Typography>{rocket.rocket_name}</Typography>
+                {rocket.active && <Typography style={{color: 'green'}}>ACTIVE</Typography>}
+                {(!rocket.active && rocket.success_rate_pct > 0) && <Typography style={{color: 'red'}}>RETIRED</Typography>}
+                {(!rocket.active && rocket.success_rate_pct === 0) && <Typography style={{color: '#1976d2'}}>PLANNED</Typography>}
+                <Button 
+                  size="small"
+                  style={{color:'white'}}
+                  key={rocket.rocket_id} 
+                  onClick={() => { this.setState({ selectedRocket: rocket.rocket_id, selRockName: rocket.rocket_name}, () => { this.openDialog()})} }
+                >
+                  Info
+                </Button>
+              </Grid>
             ))
           }
         </Grid>

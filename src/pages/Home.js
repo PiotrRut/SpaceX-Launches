@@ -71,24 +71,23 @@ export default function Home() {
 
   return (
     <div className={classes.root}>
-        <AppBar position="static" style={{ background: "#424242", width:"100%" }}>
-          <Tabs 
-          value={value}
-          onChange={handleChange}
-          indicatorColor="secondary"
-          textColor="white"
-          variant="fullWidth"
-          aria-label="staff-action-tabs"
-          >
-            <Tab label="Missions" {...a11yProps(0)} />
-            <Tab label="Rockets" {...a11yProps(1)} />
-            <Tab label="Stats" {...a11yProps(2)} />
-            <Tab label="About" {...a11yProps(3)} />
-          </Tabs>
-        </AppBar>
+      <AppBar position="static" style={{ background: "#424242", width:"100%" }}>
+        <Tabs 
+        value={value}
+        onChange={handleChange}
+        indicatorColor="secondary"
+        textColor="white"
+        variant="fullWidth"
+        aria-label="staff-action-tabs"
+        >
+          <Tab label="Missions" {...a11yProps(0)} />
+          <Tab label="Rockets" {...a11yProps(1)} />
+          <Tab label="Stats" {...a11yProps(2)} />
+          <Tab label="About" {...a11yProps(3)} />
+        </Tabs>
+      </AppBar>
 
-        <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
-
+      <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
         {/* Contents of Tab 1: Missions */}    
         <TabPanel value={value} index={0}>
         <Grid justify="center" align-content="center" container spacing={6}>
@@ -115,8 +114,7 @@ export default function Home() {
         <TabPanel value={value} index={3}>
           <About/>
         </TabPanel>
-
-        </SwipeableViews>
+      </SwipeableViews>
     </div>
   );
 }
