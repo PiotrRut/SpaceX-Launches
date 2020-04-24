@@ -92,10 +92,10 @@ export default function Home() {
         {/* Contents of Tab 1: Missions */}    
         <TabPanel value={value} index={0}>
         <Grid justify="center" align-content="center" container spacing={6}>
-          <Grid item className="List" lg={6}>
+          <Grid item className="List" lg={6} xl={5}>
               <SpaceXList/>
           </Grid>
-          <Grid item className="Search" lg={5} sm={7} xs={12} md={7}>
+          <Grid item className="Search" xl={3} lg={5} sm={7} xs={12} md={7}>
               <SpaceXSearch/>
           </Grid>
         </Grid> 
