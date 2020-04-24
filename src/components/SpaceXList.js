@@ -58,7 +58,7 @@ class SpaceXList extends React.Component {
     return (
       <div className={classes.root}>
         <br/>
-        <Typography paragraph>Launch schedule for the next 10 launches</Typography>
+        <Typography paragraph>Schedule for the next 10 launches</Typography>
         {/* Filter the array to only return the next ten launches, and display their details inside the panel */}
         { this.state.launches.filter(flight => (flight.flight_number <= this.state.launches[0].flight_number + 9))
           .map(flight => (

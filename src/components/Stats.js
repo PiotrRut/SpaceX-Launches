@@ -106,7 +106,9 @@ class Stats extends React.Component {
             <Typography variant="h5">
               № Falcon9 launches:
             </Typography>
-            <br/>
+            <Typography paragraph>
+              (excluding Amos-6)
+            </Typography>
             <Typography variant="h3"> <span role="img" aria-label="satellite">🚀</span> {f9Launches -1}</Typography>
             </Paper>
           </Grid>
