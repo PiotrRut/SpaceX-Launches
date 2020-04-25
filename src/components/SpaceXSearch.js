@@ -25,13 +25,16 @@ import falconHeavy from '../assets/falconHeavy.png'
 const styles = theme => ({
   root: {
     color: "white",
-    width: '100%'
+    width: '100%',
   },
   input: {
     color: "white"
   },
-  cssLabel: {
-    color : 'gray'
+  cssLabel: { // overriding the input label properties
+    color : 'gray',
+    "&$focusedLabel": {
+      color: "gray"
+    },
   },
   paper: { // set colour of the paper dropdown
     backgroundColor: '#212121',
@@ -46,6 +49,7 @@ const styles = theme => ({
   noOptions: { // set colour to the text when there are no options returned from search
     color: 'white'
   },
+  focusedLabel: {} // colour of the text field label when focused (from cssLabel)
 });
 
 // Search functionality for displaying information about any mission searched by the user
@@ -170,6 +174,7 @@ class SpaceXSearch extends React.Component {
               InputLabelProps={{
                 classes: {
                   root: classes.cssLabel,
+                  focused: classes.focusedLabel
                 },
               }}
             />   
