@@ -197,10 +197,9 @@ class SpaceXSearch extends React.Component {
         classes={classes}
         fullWidth
         maxWidth="sm"
-        scroll="body"
         >
           <DialogTitle id="form-dialog-title">{this.state.selected}</DialogTitle>
-          <DialogContent style={{ overflow: "hidden"}}>
+          <DialogContent>
             { this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
             .map(launch => ( 
               <div>

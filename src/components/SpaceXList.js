@@ -22,6 +22,11 @@ const styles = theme => ({
   cssLabel: {
     color : 'gray'
   },
+  expanded: {
+      "&$expanded": {
+        margin: '0'
+      }
+  }
 });
 
 // List view of the next 10 upcoming launches
@@ -61,7 +66,9 @@ class SpaceXList extends React.Component {
         {/* Filter the array to only return the next ten launches, and display their details inside the panel */}
         { this.state.launches.filter(flight => (flight.flight_number <= this.state.launches[0].flight_number + 9))
           .map(flight => (
-          <ExpansionPanel style={{ maxWidth: '700px', backgroundColor: '#212121', marginLeft: '5px', marginRight: '5px'}}>
+          <ExpansionPanel classes={{expanded: classes.expanded}} 
+          style={{ maxWidth: '700px', backgroundColor: '#212121', marginLeft: '5px', marginRight: '5px'}}
+          >
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}
               aria-controls="panel1a-content"

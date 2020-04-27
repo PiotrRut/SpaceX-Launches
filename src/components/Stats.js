@@ -95,12 +95,12 @@ class Stats extends React.Component {
 
     return (
       <div className="About">
-        <Grid container justify="center" spacing={3}>
+        <Grid alignItems="center" justify="center" direction="row" container spacing={3}>
 
           {/* Starlink satellites in space (assuming 60 satellites per launch) */}
           <Grid item>
-            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
-            <Typography variant="h5">
+            <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
+            <Typography variant="h6">
               № of Starlink satellites in space:
             </Typography>
             <br/>
@@ -110,8 +110,8 @@ class Stats extends React.Component {
 
           {/* All launches in total (excluding Amos-6 which never launched due to launch pad explosion) */}
           <Grid item>
-            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
-            <Typography variant="h5">
+            <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
+            <Typography variant="h6">
               № of launches in total:
             </Typography>
             <Typography paragraph>
@@ -123,8 +123,8 @@ class Stats extends React.Component {
 
           {/* All successful landings in total */}
           <Grid item>
-            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
-            <Typography variant="h5">
+            <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
+            <Typography variant="h6">
               № of successful landings:
             </Typography>
             <br/>
@@ -134,8 +134,8 @@ class Stats extends React.Component {
 
           {/* All Falcon 1 launches in total  */}
           <Grid item>
-            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
-            <Typography variant="h5">
+            <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
+            <Typography variant="h6">
               № of Falcon 1 launches:
             </Typography>
             <br/>
@@ -145,8 +145,8 @@ class Stats extends React.Component {
 
           {/* All Falcon 9 launches in total (excluding Amos-6 which never launched due to launch pad explosion) */}
           <Grid item>
-            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
-            <Typography variant="h5">
+            <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
+            <Typography variant="h6">
               № of Falcon9 launches:
             </Typography>
             <Typography paragraph>
@@ -158,8 +158,8 @@ class Stats extends React.Component {
 
           {/* All Falcon Heavy launches in total  */}
           <Grid item>
-            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
-            <Typography variant="h5">
+            <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
+            <Typography variant="h6">
               № of Falcon Heavy launches:
             </Typography>
             <br/>
@@ -169,8 +169,8 @@ class Stats extends React.Component {
 
           {/* All Dragon 1 flights in total  */}
           <Grid item>
-            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
-            <Typography variant="h5">
+            <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
+            <Typography variant="h6">
               № of Dragon 1 launches:
             </Typography>
             <Typography paragraph>
@@ -182,8 +182,8 @@ class Stats extends React.Component {
 
           {/* All Crew Dragon flights in total  */}
           <Grid item>
-            <Paper elevation={3} style={{ width: '50vh', height: '16vh', padding: '15px', background: '#212121', margin: '15px', alignText: 'center'}}>
-            <Typography variant="h5">
+            <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
+            <Typography variant="h6">
               № of Crew Dragon launches:
             </Typography>
             <Typography paragraph>

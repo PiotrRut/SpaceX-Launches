@@ -77,7 +77,8 @@ class Rockets extends React.Component {
                 {(!rocket.active && rocket.success_rate_pct === 0) && <Typography style={{color: '#1976d2'}}>PLANNED</Typography>}
                 <Button 
                   size="small"
-                  style={{color:'white'}}
+                  variant="outlined"
+                  color="primary"
                   key={rocket.rocket_id} 
                   onClick={() => { this.setState({ selectedRocket: rocket.rocket_id, selRockName: rocket.rocket_name}, () => { this.openDialog()})} }
                 >
@@ -96,10 +97,9 @@ class Rockets extends React.Component {
         aria-labelledby="form-dialog-title"
         classes={classes}
         fullWidth
-        scroll="body"
         maxWidth="sm"
         >
-          <DialogContent style={{ overflow: "hidden"}}>
+          <DialogContent>
             { this.state.rockets.filter(rocket => rocket.rocket_id === this.state.selectedRocket)
             .map(rocket => ( 
               <div>
