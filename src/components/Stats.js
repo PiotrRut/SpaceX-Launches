@@ -100,7 +100,7 @@ class Stats extends React.Component {
           {/* Starlink satellites in space (assuming 60 satellites per launch) */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
-            <Typography variant="h6">
+            <Typography>
               № of Starlink satellites in space:
             </Typography>
             <br/>
@@ -111,7 +111,7 @@ class Stats extends React.Component {
           {/* All launches in total (excluding Amos-6 which never launched due to launch pad explosion) */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
-            <Typography variant="h6">
+            <Typography>
               № of launches in total:
             </Typography>
             <Typography paragraph>
@@ -124,7 +124,7 @@ class Stats extends React.Component {
           {/* All successful landings in total */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
-            <Typography variant="h6">
+            <Typography>
               № of successful landings:
             </Typography>
             <br/>
@@ -135,7 +135,7 @@ class Stats extends React.Component {
           {/* All Falcon 1 launches in total  */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
-            <Typography variant="h6">
+            <Typography>
               № of Falcon 1 launches:
             </Typography>
             <br/>
@@ -146,7 +146,7 @@ class Stats extends React.Component {
           {/* All Falcon 9 launches in total (excluding Amos-6 which never launched due to launch pad explosion) */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
-            <Typography variant="h6">
+            <Typography>
               № of Falcon9 launches:
             </Typography>
             <Typography paragraph>
@@ -159,7 +159,7 @@ class Stats extends React.Component {
           {/* All Falcon Heavy launches in total  */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
-            <Typography variant="h6">
+            <Typography>
               № of Falcon Heavy launches:
             </Typography>
             <br/>
@@ -170,7 +170,7 @@ class Stats extends React.Component {
           {/* All Dragon 1 flights in total  */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
-            <Typography variant="h6">
+            <Typography>
               № of Dragon 1 launches:
             </Typography>
             <Typography paragraph>
@@ -183,7 +183,7 @@ class Stats extends React.Component {
           {/* All Crew Dragon flights in total  */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
-            <Typography variant="h6">
+            <Typography>
               № of Crew Dragon launches:
             </Typography>
             <Typography paragraph>
