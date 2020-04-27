@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/styles';
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogContent from '@material-ui/core/DialogContent'
+import DialogActions from '@material-ui/core/DialogActions'
 import PropTypes from 'prop-types';
 import moment from 'moment'
 
@@ -144,6 +145,9 @@ class Rockets extends React.Component {
                   </Grid>
 
                 </Grid>
+                <DialogActions>
+                  <Button size="small" color="primary" onClick={this.closeDialog}>Close</Button>
+                </DialogActions>
               </div>
             ))
             }
