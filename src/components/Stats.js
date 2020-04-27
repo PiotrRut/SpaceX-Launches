@@ -174,7 +174,7 @@ class Stats extends React.Component {
               № of Dragon 1 launches:
             </Typography>
             <Typography paragraph>
-              (including COTS-1 & COTS-1)
+              (including COTS-1 & COTS-2)
             </Typography>
             <Typography variant="h3"> <span role="img" aria-label="satellite">🛰</span> {dragon1Flights}</Typography>
             </Paper>
