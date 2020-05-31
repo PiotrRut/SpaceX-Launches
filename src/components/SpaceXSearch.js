@@ -142,6 +142,12 @@ class SpaceXSearch extends React.Component {
                 Landing Successful
               </Typography>
             }
+            {/* If mission is in the future */}
+            {launch.upcoming && 
+              <Typography style={{color: '#1976d2'}}>
+                Upcoming Mission
+              </Typography>
+            }            
 
             {launch.details ? launch.details : 'No details provided for this launch'}
             <br/> <br/> 
