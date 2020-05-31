@@ -10,6 +10,10 @@ import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
 import SwipeableViews from 'react-swipeable-views'
 
+import Switch from '@material-ui/core/Switch';
+import Fade from '@material-ui/core/Fade';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 import SpaceXSearch from '../components/SpaceXSearch';
 import SpaceXList from '../components/SpaceXList';
 import Rockets from '../components/Rockets'
@@ -56,6 +60,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Home() {
   const [value, setValue] = React.useState(0)
+  const [checked, setChecked] = React.useState(false);
   const classes = useStyles()
   const theme = useTheme()
 
@@ -67,6 +72,24 @@ export default function Home() {
   // SwipeableViews handling
   const handleChangeIndex = (index) => {
     setValue(index)
+  }
+
+  const handleCheck = () => {
+    setChecked((prev) => !prev);
+  };
+
+  var missionsTab;
+
+  if (!checked) {
+    missionsTab = 
+      <Grid item>
+        <SpaceXList/>
+      </Grid>
+  } else {
+    missionsTab = 
+      <Grid item xl={3} lg={7} sm={7} xs={12} md={7}>
+        <SpaceXSearch/>
+      </Grid>
   }
 
   return (
@@ -88,17 +111,17 @@ export default function Home() {
       </AppBar>
 
       <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
-        {/* Contents of Tab 1: Missions */}    
+        {/* Contents of Tab 1: Missions */}   
         <TabPanel value={value} index={0}>
-        <Grid justify="center" align-content="center" container spacing={6}>
-          <Grid item className="List" lg={6} xl={5}>
-              <SpaceXList/>
-          </Grid>
-          <Grid item className="Search" xl={3} lg={5} sm={7} xs={12} md={7}>
-              <SpaceXSearch/>
-          </Grid>
-        </Grid> 
+          <FormControlLabel
+            control={<Switch checked={checked} onChange={handleCheck} />}
+            label="Filter missions / show list"
+          />
+          <Grid justify="center" alignItems="center" container spacing={6}> 
+            {missionsTab}
+          </Grid> 
         </TabPanel>
+
 
         {/* Contents of Tab 2: Rockets */}
         <TabPanel value={value} index={1}>

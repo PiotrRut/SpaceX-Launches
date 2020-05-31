@@ -98,17 +98,20 @@ class SpaceXSearch extends React.Component {
     this.state.allLaunches.filter(launch => launch.mission_name === this.state.selected)
       .map(launch => ( 
         launch.tentative_max_precision === 'quarter' || launch.tentative_max_precision === 'year' ?
-          <p style={{ color: '#d32f2f'}}>
+          <Typography paraghraph align="left">
+            <br/>
             {launch.details ? launch.details : 'No details provided for this launch'}
             <br/> <br/>
             Launch: TBC (NET {launch.launch_year})
-          </p>
+          </Typography>
           :
-          <p>
-            {/* Add the mission badge at the top of the results */}
-            {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '80px', justifyContent: 'center', marginBottom: '8px'}} src={launch.links.mission_patch_small}/>}
-            <br/>
+          <div>
+          {/* Add the mission badge at the top of the results */}
+          <br/>
+          {launch.links.mission_patch_small && <img alt='patch' style={{ maxWidth: '80px', justifyContent: 'center', marginBottom: '8px'}} src={launch.links.mission_patch_small}/>}
+          <br/>
 
+          <Typography paragraph align="left">
             {/* If landing has failed and fell in the water */}
             {(!launch.upcoming && launch.rocket.first_stage.cores[0].landing_type === 'Ocean' && !launch.rocket.first_stage.cores[0].land_success) &&
               <Typography style={{color: '#d32f2f'}}>
@@ -150,7 +153,8 @@ class SpaceXSearch extends React.Component {
             }
             <br/>
             Site: {launch.launch_site.site_name_long}
-          </p>                            
+          </Typography>  
+          </div>                          
       ))
     return (
       <div className={classes.root}>
@@ -161,13 +165,13 @@ class SpaceXSearch extends React.Component {
           options={this.state.allLaunches}
           getOptionLabel={(option) => option.mission_name}
           clearOnEscape
-          style={{maxWidth: '540px'}}
+          
           renderInput={(params) =>
             <TextField
               {...params}
               className={classes.root}
               label="Start typing the mission name..."
-              style={{maxWidth: '540px'}}
+              
               InputProps={{
                 ...params.InputProps,
                 className: classes.input
@@ -184,7 +188,7 @@ class SpaceXSearch extends React.Component {
         {/* Display the card with currently selected mission and it's description */}
         { selectedLaunch.length > 0
         &&
-        <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px', maxWidth: '500px'}}>
+        <Paper elevation={3} style={{ background: '#212121', padding: '20px', marginTop: '10px'}}>
           <Button variant="outlined" onClick={this.openDialog} color="primary" size="small">Click for Details</Button>
           {selectedLaunch} 
         </Paper>
