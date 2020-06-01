@@ -23,6 +23,7 @@ const styles = theme => ({
     backgroundColor: '#212121',
     color: 'white',
     width: '80vh',
+    maxHeight: '60vh',
     padding: '20px',
     margin: 'auto',
   }
@@ -149,10 +150,10 @@ class Rockets extends React.Component {
               {(!rocket.active && rocket.success_rate_pct === 0) && <Typography align="left" style={{color: '#1976d2'}}>Planned</Typography>}
               <br/>
               <Typography align="left">First flight: {moment(rocket.first_flight).format('D MMM YYYY')}</Typography>
-              <Typography align="left">Height: {rocket.height.meters}m / {rocket.height.feet}ft </Typography>
-              <Typography align="left">Mass: {rocket.mass.kg}kg / {rocket.mass.lb}lbs</Typography>
+              <Typography align="left">Height: {rocket.height.meters}m </Typography>
+              <Typography align="left">Mass: {rocket.mass.kg}kg</Typography>
               <Typography align="left">№ of stages: {rocket.stages}</Typography>
-              <Typography align="left">Cost per launch: ${rocket.cost_per_launch}</Typography>
+              <Typography align="left">Cost p/ launch: ${rocket.cost_per_launch}</Typography>
 
               {/* Number of launches of each rocket (excluding Amos-6 for F9) */}
               {
