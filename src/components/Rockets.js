@@ -122,7 +122,7 @@ class Rockets extends React.Component {
         <IconButton onClick={this.handleChangeBack} style={{color: 'white'}}><ArrowBackIosIcon/></IconButton>
           <IconButton onClick={this.handleChangeForward} style={{color: 'white'}}><ArrowForwardIosIcon/></IconButton>
         <br/>
-          <SwipeableViews index={this.state.index}>
+          <SwipeableViews index={this.state.index} disabled>
           {
             this.state.rockets.map(rocket => (
               <Paper classes={classes}>

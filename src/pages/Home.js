@@ -69,11 +69,6 @@ export default function Home() {
     setValue(newValue)
   }
 
-  // SwipeableViews handling
-  const handleChangeIndex = (index) => {
-    setValue(index)
-  }
-
   const handleCheck = () => {
     setChecked((prev) => !prev);
   };
@@ -110,7 +105,7 @@ export default function Home() {
         </Tabs>
       </AppBar>
 
-      <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={handleChangeIndex}>
+      <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} disabled>
         {/* Contents of Tab 1: Missions */}   
         <TabPanel value={value} index={0}>
           <FormControlLabel
