@@ -22,8 +22,8 @@ const styles = theme => ({
   root: { // set colour of the paper dialog
     backgroundColor: '#212121',
     color: 'white',
-    width: '80vh',
-    maxHeight: '60vh',
+    width: '70vh',
+    height: '315px',
     padding: '20px',
     margin: 'auto',
   }
