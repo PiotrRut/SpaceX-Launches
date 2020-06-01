@@ -85,12 +85,6 @@ class Rockets extends React.Component {
    }
   };
 
-  // Change rockets on index change
-  handleChangeIndex = index => {
-    this.setState({
-      index,
-    });
-  };
 
   render() {
     let f9Launches = 0
@@ -128,7 +122,7 @@ class Rockets extends React.Component {
         <IconButton onClick={this.handleChangeBack} style={{color: 'white'}}><ArrowBackIosIcon/></IconButton>
           <IconButton onClick={this.handleChangeForward} style={{color: 'white'}}><ArrowForwardIosIcon/></IconButton>
         <br/>
-          <SwipeableViews index={this.state.index} onChangeIndex={this.handleChangeIndex}>
+          <SwipeableViews index={this.state.index}>
           {
             this.state.rockets.map(rocket => (
               <Paper classes={classes}>
