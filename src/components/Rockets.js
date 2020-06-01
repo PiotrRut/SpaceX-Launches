@@ -2,18 +2,16 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/styles';
-import Dialog from '@material-ui/core/Dialog'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogActions from '@material-ui/core/DialogActions'
 import PropTypes from 'prop-types';
 import moment from 'moment'
 import Paper from '@material-ui/core/Paper'
 
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard } from 'react-swipeable-views-utils';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import falcon9 from '../assets/falcon9.png'
 import falcon1 from '../assets/falcon1.png'
@@ -40,7 +38,8 @@ class Rockets extends React.Component {
       launches: [],
       selectedRocket: '',
       selRockName: '',
-      dialogOpen: false
+      dialogOpen: false,
+      index: 0
     }
   }
 
@@ -62,14 +61,36 @@ class Rockets extends React.Component {
       .catch(error => console.error(error))
   }
 
-  // Opening the info dialog
-  openDialog = () => {
-    this.setState({ dialogOpen: true })
-  }
-  // Closing the info dialog
-  closeDialog = () => {
-    this.setState({ dialogOpen: false })
-  }
+  // Increment the index by one with each button press to show next rocket
+  handleChangeForward = () => {
+    this.setState(prevState => {
+      return {index: prevState.index + 1}
+   })
+   if (this.state.index > 2) {
+     this.setState({
+       index: 0
+     })
+   }
+  };
+
+  // Decrement the index by one with each button press to show previous rocket
+  handleChangeBack = () => {
+    this.setState(prevState => {
+      return {index: prevState.index - 1}
+   })
+   if (this.state.index < 1) {
+     this.setState({
+       index: 3
+     })
+   }
+  };
+
+  // Change rockets on index change
+  handleChangeIndex = index => {
+    this.setState({
+      index,
+    });
+  };
 
   render() {
     let f9Launches = 0
@@ -99,13 +120,15 @@ class Rockets extends React.Component {
     })
 
     return (
-      <div className="About">
+      <div className="Rockets">
         <Typography variant="h5" style={{marginBottom: '5px'}}>SpaceX Rockets</Typography>
         <Typography>
           Below are the planned and retired rockets, as well as current lineup!
         </Typography>
+        <IconButton onClick={this.handleChangeBack} style={{color: 'white'}}><ArrowBackIosIcon/></IconButton>
+          <IconButton onClick={this.handleChangeForward} style={{color: 'white'}}><ArrowForwardIosIcon/></IconButton>
         <br/>
-          <BindKeyboardSwipeableViews enableMouseEvents>
+          <SwipeableViews index={this.state.index} onChangeIndex={this.handleChangeIndex}>
           {
             this.state.rockets.map(rocket => (
               <Paper classes={classes}>
@@ -156,13 +179,11 @@ class Rockets extends React.Component {
                   <Typography align="left">{`${pl.id}`.toUpperCase()}: {pl.kg}kg</Typography>
                 ))}
               </Grid>
-
-
               </Grid>
               </Paper>
             ))
           }
-          </BindKeyboardSwipeableViews>
+          </SwipeableViews>
       </div>
     );
   }
