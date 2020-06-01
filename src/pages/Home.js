@@ -115,7 +115,7 @@ export default function Home() {
         <TabPanel value={value} index={0}>
           <FormControlLabel
             control={<Switch checked={checked} onChange={handleCheck} />}
-            label="Filter missions / show list"
+            label="List / Filter Missions"
           />
           <Grid justify="center" alignItems="center" container spacing={6}> 
             {missionsTab}
