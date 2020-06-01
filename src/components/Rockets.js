@@ -28,7 +28,6 @@ const styles = theme => ({
   }
 });
 
-const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews)
 
 class Rockets extends React.Component {
   constructor(props) {
