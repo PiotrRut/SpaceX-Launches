@@ -125,7 +125,11 @@ export default function Home() {
 
         {/* Contents of Tab 2: Rockets */}
         <TabPanel value={value} index={1}>
-          <Rockets/>
+          <Grid justify="center" alignItems="center" container spacing={6}>
+            <Grid item xl={3} lg={7} sm={7} xs={12} md={7}>
+              <Rockets/>
+            </Grid>
+          </Grid>
         </TabPanel>
 
         {/* Contents of Tab 3: Stats */}

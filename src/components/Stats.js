@@ -63,7 +63,7 @@ class Stats extends React.Component {
       }
     })
 
-    // Compute number of Falcon Heavy launches
+    // Compute number of Falcon 1 launches
     this.state.launches.forEach(launch => {
       if (launch.flight_number >= 1 && launch.rocket.rocket_id === 'falcon1') {
         f1Launches += 1;
