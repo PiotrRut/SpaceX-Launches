@@ -24,10 +24,6 @@ import falconHeavy from '../assets/falconHeavy.png'
 
 
 const styles = theme => ({
-  root: {
-    color: "white",
-    width: '100%',
-  },
   input: {
     color: "white"
   },
@@ -39,7 +35,10 @@ const styles = theme => ({
   },
   paper: { // set colour of the paper dropdown
     backgroundColor: '#212121',
-    color: 'white'
+    color: 'white',
+  },
+  container: {
+    margin: -20,
   },
   clearIndicator: { // set colour of the clear button
     color: 'white'
@@ -119,7 +118,7 @@ class SpaceXSearch extends React.Component {
               </Typography>
             }
             {/* If landing has failed */}                  
-            {(!launch.upcoming && launch.launch_success && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type === 'ASDS') && 
+            {(!launch.upcoming && launch.launch_success && !launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_intent) && 
               <Typography style={{color: '#d32f2f'}}>
                 Landing Failed
               </Typography>
@@ -128,12 +127,6 @@ class SpaceXSearch extends React.Component {
             {(!launch.upcoming && !launch.launch_success) && 
               <Typography style={{color: '#d32f2f'}}>
                 Launch Failed
-              </Typography>
-            }
-            {/* If landing has been successfull and fell in the water */}
-            {(!launch.upcoming && launch.rocket.first_stage.cores[0].land_success && launch.rocket.first_stage.cores[0].landing_type === 'Ocean') && 
-              <Typography style={{color: '#1976d2'}}>
-                Water Landing - Successful
               </Typography>
             }
             {/* If landing has been sucessfull */}

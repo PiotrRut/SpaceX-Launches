@@ -61,7 +61,7 @@ class SpaceXList extends React.Component {
     const { classes } = this.props;
     if (this.state.launches === null) return null;
     return (
-      <div className={classes.root}>
+      <div className="List">
         <br/>
         {/* Filter the array to only return the next ten launches, and display their details inside the panel */}
         { this.state.launches.filter(flight => (flight.flight_number <= this.state.launches[0].flight_number + 9))
@@ -77,15 +77,15 @@ class SpaceXList extends React.Component {
               {/* Launches with unconfirmed date (quarterly or yearly precision) will be marked as such. If the
               day of the month of the launch is unsure (monthly precision) only the month is displayed */}
               {flight.tentative_max_precision === 'quarter' || flight.tentative_max_precision === 'year' ?
-              <Typography style={{ color: '#d32f2f'}}>
+              <Typography align="left" style={{ color: '#d32f2f'}}>
                 <i>{flight.mission_name}</i> - Date: TBC (NET {flight.launch_year})
               </Typography> 
               : flight.tentative_max_precision === 'hour' || flight.tentative_max_precision === 'hour' ?
-              <Typography>
+              <Typography align="left">
                 <i>{flight.mission_name}</i> - {moment(flight.launch_date_utc).format('D MMM YYYY')} 
               </Typography>                                
               : 
-              <Typography>
+              <Typography align="left">
                 <i>{flight.mission_name}</i> - {moment(flight.launch_date_utc).format('MMM YYYY')}
               </Typography>
               }
