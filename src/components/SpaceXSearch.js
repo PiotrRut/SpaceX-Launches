@@ -199,8 +199,8 @@ class SpaceXSearch extends React.Component {
         onClose={this.closeDialog}
         aria-labelledby="form-dialog-title"
         classes={classes}
-        fullWidth
-        maxWidth="sm"
+        
+        maxWidth="md"
         >
           <DialogTitle id="form-dialog-title">{this.state.selected}</DialogTitle>
           <DialogContent>
