@@ -199,8 +199,7 @@ class SpaceXSearch extends React.Component {
         onClose={this.closeDialog}
         aria-labelledby="form-dialog-title"
         classes={classes}
-        
-        maxWidth="md"
+        fullWidth
         >
           <DialogTitle id="form-dialog-title">{this.state.selected}</DialogTitle>
           <DialogContent>
@@ -212,7 +211,7 @@ class SpaceXSearch extends React.Component {
                   {/* Rocket images for mission info dialog */}
                   <Grid item>
                     {launch.rocket.rocket_id === 'falcon9' && <img alt='falcon9' style={{ maxWidth: '22px', justifyContent: 'left'}} src={falcon9}/>}
-                    {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '53px', justifyContent: 'left'}} src={falconHeavy}/>}
+                    {launch.rocket.rocket_id === 'falconheavy' && <img alt='falconHeavy' style={{ maxWidth: '3.1em', justifyContent: 'left'}} src={falconHeavy}/>}
                     {launch.rocket.rocket_id === 'falcon1' && <img alt='falcon1' style={{ maxWidth: '28px', justifyContent: 'left'}} src={falcon1}/>}
                   </Grid>
 
