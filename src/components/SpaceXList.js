@@ -34,10 +34,7 @@ class SpaceXList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      launches: [{}],
-      allLaunches: [{}],
-      selected: '',
-      itemSelected: false,
+      launches: [{}]
     }
   }
 
@@ -50,11 +47,6 @@ class SpaceXList extends React.Component {
         console.log(this.state.launches)
       })
       .catch(error => console.error(error))
-  }
-
-
-  handleInput = (e) => {
-    this.setState({ allLaunches: e.target.value })
   }
 
   render() {

@@ -11,7 +11,6 @@ import AppBar from '@material-ui/core/AppBar'
 import SwipeableViews from 'react-swipeable-views'
 
 import Switch from '@material-ui/core/Switch';
-import Fade from '@material-ui/core/Fade';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import SpaceXSearch from '../components/SpaceXSearch';
@@ -69,12 +68,18 @@ export default function Home() {
     setValue(newValue)
   }
 
+  // Checkbutton state update
   const handleCheck = () => {
     setChecked((prev) => !prev);
   };
 
   var missionsTab;
 
+  /*
+    if the button is not check (initial state)
+    mission list is on display, when checked the filter
+    field is on display
+  */ 
   if (!checked) {
     missionsTab = 
       <Grid item>

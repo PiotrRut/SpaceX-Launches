@@ -37,7 +37,7 @@ const styles = theme => ({
     backgroundColor: '#212121',
     color: 'white',
   },
-  container: {
+  container: { // margin of the mission dialog for preventing overflow on mobile devices
     margin: -20,
   },
   clearIndicator: { // set colour of the clear button
@@ -52,6 +52,7 @@ const styles = theme => ({
   focusedLabel: {} // colour of the text field label when focused (from cssLabel)
 });
 
+// TODO: Clean up the code here a bit
 // Search functionality for displaying information about any mission searched by the user
 class SpaceXSearch extends React.Component {
   constructor(props) {
@@ -75,7 +76,7 @@ class SpaceXSearch extends React.Component {
       .catch(error => console.error(error))
   }
 
-  // Handle the input from the search box and update state to the currently selected mission
+  // Update state to the currently selected mission from the autocomplete
   handleInput = (e) => {
     this.setState({selected: e.target.textContent })
   }
