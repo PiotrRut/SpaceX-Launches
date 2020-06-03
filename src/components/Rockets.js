@@ -115,7 +115,10 @@ class Rockets extends React.Component {
       <div className="Rockets">
         <Typography variant="h5" style={{marginBottom: '5px'}}>SpaceX Rockets</Typography>
         <Typography>
-          Below are the planned and retired rockets, as well as current lineup!
+          Below are the current, retired, and future vehicles!
+        </Typography>
+        <Typography>
+          Swipe the cards on mobile devices to reveal more information!
         </Typography>
         {/* < > buttons for navigation */}
         <IconButton onClick={this.handleChangeBack} style={{color: 'white'}}><ArrowBackIosIcon/></IconButton>
