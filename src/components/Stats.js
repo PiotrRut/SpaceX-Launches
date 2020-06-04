@@ -108,16 +108,16 @@ class Stats extends React.Component {
             </Paper>
           </Grid>
 
-          {/* All launches in total (excluding Amos-6 which never launched due to launch pad explosion) */}
+          {/* All launches in total (excluding Amos-6 and CRS-7 which were destroyed on launch) */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
             <Typography>
               № of launches in total:
             </Typography>
             <Typography paragraph>
-              (excluding Amos-6)
+              (excluding Amos-6 and CRS-7)
             </Typography>
-            <Typography variant="h3"> <span role="img" aria-label="satellite">🚀</span> {this.state.launches.length -1 } </Typography>
+            <Typography variant="h3"> <span role="img" aria-label="satellite">🚀</span> { this.state.launches.length -2 } </Typography>
             </Paper>
           </Grid>
 
@@ -143,16 +143,16 @@ class Stats extends React.Component {
             </Paper>
           </Grid>          
 
-          {/* All Falcon 9 launches in total (excluding Amos-6 which never launched due to launch pad explosion) */}
+          {/* All Falcon 9 launches in total (excluding Amos-6 and CRS-7 which were destroyed on launch) */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
             <Typography>
               № of Falcon9 launches:
             </Typography>
             <Typography paragraph>
-              (excluding Amos-6)
+              (excluding Amos-6 and CRS-7)
             </Typography>
-            <Typography variant="h3"> <span role="img" aria-label="satellite">🚀</span> {f9Launches -1}</Typography>
+            <Typography variant="h3"> <span role="img" aria-label="satellite">🚀</span> { f9Launches -2 }</Typography>
             </Paper>
           </Grid>
 

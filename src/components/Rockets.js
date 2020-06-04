@@ -151,10 +151,10 @@ class Rockets extends React.Component {
             <Typography align="left">№ of stages: {rocket.stages}</Typography>
             <Typography align="left">Cost p/ launch: ${rocket.cost_per_launch}</Typography>
 
-            {/* Number of launches of each rocket (excluding Amos-6 for F9) */}
+            {/* Number of launches of each rocket (excluding Amos-6 and CRS-7 for F9) */}
             {
               rocket.rocket_id === "falcon1" ? <Typography align="left">№ of launches: {f1Launches}</Typography>
-              : rocket.rocket_id === "falcon9" ? <Typography align="left">№ of launches: {f9Launches - 1}</Typography>
+              : rocket.rocket_id === "falcon9" ? <Typography align="left">№ of launches: {f9Launches - 2}</Typography>
               : rocket.rocket_id === "falconheavy" ? <Typography align="left">№ of launches: {fHeavyLaunches}</Typography>
               : null
             }
