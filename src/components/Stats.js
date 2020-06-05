@@ -147,7 +147,7 @@ class Stats extends React.Component {
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
             <Typography>
-              № of Falcon9 launches:
+              № of Falcon 9 launches:
             </Typography>
             <Typography paragraph>
               (excluding Amos-6 and CRS-7)
