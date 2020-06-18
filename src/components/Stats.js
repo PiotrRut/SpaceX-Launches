@@ -8,17 +8,27 @@ class Stats extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      launches: [{}]
+      launches: [{}],
+      crew: [{}]
     }
   }
 
-  // Get all launches and add to local array
+
   componentDidMount() {
+    // All past launches 
     axios
       .get(`https://api.spacexdata.com/v3/launches/past`)
       .then(res => {
         this.setState({ launches: res.data })
         console.log(this.state.launches)
+      })
+      .catch(error => console.error(error))
+    // SpaceX crew members sent to space
+    axios
+      .get(`https://api.spacexdata.com/v4/crew`)
+      .then(res => {
+        this.setState({ crew: res.data })
+        console.log(this.state.crew)
       })
       .catch(error => console.error(error))
   }
@@ -180,16 +190,14 @@ class Stats extends React.Component {
             </Paper>
           </Grid>
 
-          {/* All Crew Dragon flights in total  */}
+          {/* Number of people sent to space by SpaceX */}
           <Grid item>
             <Paper elevation={3} style={{ width: '40vh', height: '16vh', padding: '15px', background: '#212121', alignText: 'center'}}>
             <Typography>
-              № of Crew Dragon launches:
+              № of people flown to space:
             </Typography>
-            <Typography paragraph>
-              (including 2 unmanned flights)
-            </Typography>
-            <Typography variant="h3"> <span role="img" aria-label="satellite">👨🏻‍🚀</span> {crewDragonFlights}</Typography>
+            <br/>
+            <Typography variant="h3"> <span role="img" aria-label="satellite">👨🏻‍🚀</span> {this.state.crew.length}</Typography>
             </Paper>
           </Grid>
 
